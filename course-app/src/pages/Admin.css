@@ -266,4 +266,6 @@ table.table .avatar {
 
 nav#mySidebar {
   position: absolute !important;
+  height: 80%;
+
 }
