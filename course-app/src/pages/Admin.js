@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './Admin.css';
 import ReactPaginate from 'react-paginate';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import AdminModal from './AdminModal';
 
 const Admin = () => {
   const [products, setProducts] = useState(null);
@@ -10,6 +13,10 @@ const Admin = () => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(-1);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   useEffect(() => {
     let url = 'https://62b049c5e460b79df0422a91.mockapi.io/name';
 
@@ -50,7 +57,7 @@ const Admin = () => {
         <td>{item.address}</td>
         <td>{item.phone}</td>
         <td>
-          <a href="#editEmployeeModal" className="edit" data-toggle="modal">
+          <a onClick={handleShow} className="edit" data-toggle="modal">
             <i className="material-icons" data-toggle="tooltip" title="Edit">
               
             </i>
@@ -66,6 +73,28 @@ const Admin = () => {
   }
   return (
     <div>
+
+
+
+
+      <>
+
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <AdminModal />
+          </Modal.Body>
+          {/* <Modal.Footer>
+
+            </Modal.Footer> */}
+        </Modal>
+      </>
+
+
+
       <nav
         className="w3-sidebar w3-collapse w3-white w3-animate-left"
         style={{ zIndex: 3, width: '300px', height: '46%' }}
@@ -188,20 +217,14 @@ const Admin = () => {
                   </div>
                   <div className="col-xs-6">
                     <a
-                      href="#addEmployeeModal"
+                      onClick={handleShow}
                       className="btn btn-success"
                       data-toggle="modal"
                     >
                       <i className="material-icons"></i>{' '}
                       <span>Add New Employee</span>
                     </a>
-                    <a
-                      href="#deleteEmployeeModal"
-                      className="btn btn-danger"
-                      data-toggle="modal"
-                    >
-                      <i className="material-icons"></i> <span>Delete</span>
-                    </a>
+
                   </div>
                 </div>
               </div>
@@ -250,156 +273,6 @@ const Admin = () => {
 
         {/* Edit Modal HTML */}
 
-        <div id="addEmployeeModal" className="modal fade">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <form>
-                <div className="modal-header">
-                  <h4 className="modal-title">Add Employee</h4>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-hidden="true"
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <div className="form-group">
-                    <label>Name</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Address</label>
-                    <textarea
-                      className="form-control"
-                      required
-                      defaultValue={''}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Phone</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <input
-                    type="button"
-                    className="btn btn-default"
-                    data-dismiss="modal"
-                    defaultValue="Cancel"
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-success"
-                    defaultValue="Add"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        {/* Edit Modal HTML */}
-        <div id="editEmployeeModal" className="modal fade">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <form>
-                <div className="modal-header">
-                  <h4 className="modal-title">Edit Employee</h4>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-hidden="true"
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <div className="form-group">
-                    <label>Name</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Address</label>
-                    <textarea
-                      className="form-control"
-                      required
-                      defaultValue={''}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Phone</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <input
-                    type="button"
-                    className="btn btn-default"
-                    data-dismiss="modal"
-                    defaultValue="Cancel"
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-info"
-                    defaultValue="Save"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        {/* Delete Modal HTML */}
-        <div id="deleteEmployeeModal" className="modal fade">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <form>
-                <div className="modal-header">
-                  <h4 className="modal-title">Delete Employee</h4>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-hidden="true"
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <p>Are you sure you want to delete these Records?</p>
-                  <p className="text-warning">
-                    <small>This action cannot be undone.</small>
-                  </p>
-                </div>
-                <div className="modal-footer">
-                  <input
-                    type="button"
-                    className="btn btn-default"
-                    data-dismiss="modal"
-                    defaultValue="Cancel"
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-danger"
-                    defaultValue="Delete"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
         {/* table Admin */}
         {/* Contact Section */}
         {/* Footer */}
