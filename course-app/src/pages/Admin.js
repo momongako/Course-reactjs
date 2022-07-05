@@ -28,7 +28,7 @@ const Admin = () => {
           setPage(0);
         }
       });
-  }, [products]);
+  }, []);
 
   useEffect(() => {
     if (products != null) {
