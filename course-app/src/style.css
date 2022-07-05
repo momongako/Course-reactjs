@@ -14821,7 +14821,7 @@ input:focus+.MuiRating-pristine {
 
 @media (min-width: 960px) {
   .makeStyles-position-397 {
-    position: fixed;
+    position: absolute;
     margin-top: 8%;
     margin-left: 5%;
   }
