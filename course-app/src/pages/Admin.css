@@ -273,3 +273,7 @@ nav#mySidebar {
   height: 60%;
   margin-left: 80px;
 }
+
+a.w3-bar-item.w3-button.w3-padding.w3-text-teal {
+  color: #6d8cff !important;
+}

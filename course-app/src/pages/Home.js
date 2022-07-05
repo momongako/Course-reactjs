@@ -17,11 +17,14 @@ const Home = () => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+
+
         setData(data); //setStudents(data)
       });
     console.log('>>> check dataUse : ', data);
 
   }, []);
+
   return (
     <div className="container">
       <Category />
@@ -62,7 +65,7 @@ const Home = () => {
                           </small>
                           <small className="m-0">
                             <i className="far fa-clock text-primary mr-2" />
-                            {item.date}
+                            {item.date.slice(0, 10)}
                           </small>
                         </div>
                         <a className="h5" href>
