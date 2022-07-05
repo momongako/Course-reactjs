@@ -1,20 +1,74 @@
 import React from 'react';
-import './Admin.css';
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import AdminModal from './AdminModal';
+import { useEffect } from 'react';
+import './Admin.css';
+import ReactPaginate from 'react-paginate';
 
 const Admin = () => {
-  const [show, setShow] = useState(false);
+  const [products, setProducts] = useState(null);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(-1);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  useEffect(() => {
+    let url = 'https://62b049c5e460b79df0422a91.mockapi.io/name';
+
+    fetch(url)
+      .then((Response) => Response.json())
+      .then((data) => {
+        setProducts(data);
+        if (data != null) {
+          setPage(0);
+        }
+      });
+  }, [products]);
+
+  useEffect(() => {
+    if (products != null) {
+      let itemsPerPage = 5;
+      const starOffset = page * itemsPerPage;
+      let endOffset = (page + 1) * itemsPerPage;
+      if (endOffset > products.length) {
+        endOffset = products.length;
+      }
+      setCurrentItems(products.slice(starOffset, endOffset));
+      setPageCount(Math.ceil(products.length / itemsPerPage));
+    }
+  }, [page]);
+
+  const handlePageClick = (event) => {
+    setPage(event.selected);
+  };
+
+  var products_list = [];
+  if (currentItems != null) {
+    products_list = currentItems.map((item) => (
+      <tr>
+        <td>{item.id}</td>
+        <td>{item.name}</td>
+        <td>{item.email}</td>
+        <td>{item.address}</td>
+        <td>{item.phone}</td>
+        <td>
+          <a href="#editEmployeeModal" className="edit" data-toggle="modal">
+            <i className="material-icons" data-toggle="tooltip" title="Edit">
+              
+            </i>
+          </a>
+          <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+            <i className="material-icons" data-toggle="tooltip" title="Delete">
+              
+            </i>
+          </a>
+        </td>
+      </tr>
+    ));
+  }
   return (
     <div>
       <nav
         className="w3-sidebar w3-collapse w3-white w3-animate-left"
-        style={{ zIndex: 3, width: '300px' }}
+        style={{ zIndex: 3, width: '300px', height: '46%' }}
         id="mySidebar"
       >
         <br />
@@ -28,7 +82,7 @@ const Admin = () => {
             <i className="fa fa-remove" />
           </a>
           <img
-            src="/w3images/avatar_g2.jpg"
+            src="https://www.w3schools.com/w3images/avatar_g2.jpg"
             style={{ width: '45%' }}
             className="w3-round"
           />
@@ -37,6 +91,7 @@ const Admin = () => {
           <h4>
             <b>PORTFOLIO</b>
           </h4>
+          <p className="w3-text-grey">Template by W3.CSS</p>
         </div>
         <div className="w3-bar-block">
           <a
@@ -83,29 +138,6 @@ const Admin = () => {
       />
       {/* !PAGE CONTENT! */}
       <div className="w3-main" style={{ marginLeft: '300px' }}>
-
-
-
-
-
-
-        <>
-
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <AdminModal />
-            </Modal.Body>
-            {/* <Modal.Footer>
-
-            </Modal.Footer> */}
-          </Modal>
-        </>
-
-
-
         {/* Header */}
         <header id="portfolio">
           <a href="#">
@@ -156,12 +188,19 @@ const Admin = () => {
                   </div>
                   <div className="col-xs-6">
                     <a
-                      onClick={handleShow}
+                      href="#addEmployeeModal"
                       className="btn btn-success"
                       data-toggle="modal"
                     >
                       <i className="material-icons"></i>{' '}
                       <span>Add New Employee</span>
+                    </a>
+                    <a
+                      href="#deleteEmployeeModal"
+                      className="btn btn-danger"
+                      data-toggle="modal"
+                    >
+                      <i className="material-icons"></i> <span>Delete</span>
                     </a>
                   </div>
                 </div>
@@ -169,12 +208,7 @@ const Admin = () => {
               <table className="table table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>
-                      <span className="custom-checkbox">
-                        <input type="checkbox" id="selectAll" />
-                        <label htmlFor="selectAll" />
-                      </span>
-                    </th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Address</th>
@@ -182,110 +216,196 @@ const Admin = () => {
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <span className="custom-checkbox">
-                        <input
-                          type="checkbox"
-                          id="checkbox1"
-                          name="options[]"
-                          defaultValue={1}
-                        />
-                        <label htmlFor="checkbox1" />
-                      </span>
-                    </td>
-                    <td>Thomas Hardy</td>
-                    <td>thomashardy@mail.com</td>
-                    <td>89 Chiaroscuro Rd, Portland, USA</td>
-                    <td>(171) 555-2222</td>
-                    <td>
-                      <a
-                        onClick={handleShow}
-
-                        className="edit"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Edit"
-                        >
-                          
-                        </i>
-                      </a>
-                      <a
-                        href="#deleteEmployeeModal"
-                        className="delete"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Delete"
-                        >
-                          
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody>{products_list}</tbody>
               </table>
               <div className="clearfix">
                 <div className="hint-text">
                   Showing <b>5</b> out of <b>25</b> entries
                 </div>
-                <ul className="pagination">
-                  <li className="page-item disabled">
-                    <a href="#">Previous</a>
-                  </li>
-                  <li className="page-item">
-                    <a href="#" className="page-link">
-                      1
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a href="#" className="page-link">
-                      2
-                    </a>
-                  </li>
-                  <li className="page-item active">
-                    <a href="#" className="page-link">
-                      3
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a href="#" className="page-link">
-                      4
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a href="#" className="page-link">
-                      5
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a href="#" className="page-link">
-                      Next
-                    </a>
-                  </li>
-                </ul>
+
+                <ReactPaginate
+                  previousLabel="Previous"
+                  nextLabel="Next"
+                  pageClassName="page-item"
+                  pageLinkClassName="page-link"
+                  previousClassName="page-item"
+                  previousLinkClassName="page-link"
+                  nextClassName="page-item"
+                  nextLinkClassName="page-link"
+                  breakLabel="..."
+                  breakClassName="page-item"
+                  breakLinkClassName="page-link"
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={handlePageClick}
+                  containerClassName="pagination"
+                  activeClassName="active"
+                  forcePage={page}
+                />
               </div>
             </div>
           </div>
         </div>
-        {/* Edit Modal HTML */}
 
         {/* Edit Modal HTML */}
 
+        <div id="addEmployeeModal" className="modal fade">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <form>
+                <div className="modal-header">
+                  <h4 className="modal-title">Add Employee</h4>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <div className="form-group">
+                    <label>Name</label>
+                    <input type="text" className="form-control" required />
+                  </div>
+                  <div className="form-group">
+                    <label>Email</label>
+                    <input type="email" className="form-control" required />
+                  </div>
+                  <div className="form-group">
+                    <label>Address</label>
+                    <textarea
+                      className="form-control"
+                      required
+                      defaultValue={''}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Phone</label>
+                    <input type="text" className="form-control" required />
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <input
+                    type="button"
+                    className="btn btn-default"
+                    data-dismiss="modal"
+                    defaultValue="Cancel"
+                  />
+                  <input
+                    type="submit"
+                    className="btn btn-success"
+                    defaultValue="Add"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 
+        {/* Edit Modal HTML */}
+        <div id="editEmployeeModal" className="modal fade">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <form>
+                <div className="modal-header">
+                  <h4 className="modal-title">Edit Employee</h4>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <div className="form-group">
+                    <label>Name</label>
+                    <input type="text" className="form-control" required />
+                  </div>
+                  <div className="form-group">
+                    <label>Email</label>
+                    <input type="email" className="form-control" required />
+                  </div>
+                  <div className="form-group">
+                    <label>Address</label>
+                    <textarea
+                      className="form-control"
+                      required
+                      defaultValue={''}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Phone</label>
+                    <input type="text" className="form-control" required />
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <input
+                    type="button"
+                    className="btn btn-default"
+                    data-dismiss="modal"
+                    defaultValue="Cancel"
+                  />
+                  <input
+                    type="submit"
+                    className="btn btn-info"
+                    defaultValue="Save"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 
+        {/* Delete Modal HTML */}
+        <div id="deleteEmployeeModal" className="modal fade">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <form>
+                <div className="modal-header">
+                  <h4 className="modal-title">Delete Employee</h4>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <p>Are you sure you want to delete these Records?</p>
+                  <p className="text-warning">
+                    <small>This action cannot be undone.</small>
+                  </p>
+                </div>
+                <div className="modal-footer">
+                  <input
+                    type="button"
+                    className="btn btn-default"
+                    data-dismiss="modal"
+                    defaultValue="Cancel"
+                  />
+                  <input
+                    type="submit"
+                    className="btn btn-danger"
+                    defaultValue="Delete"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         {/* table Admin */}
-        {/* Pagination */}
-
+        {/* Contact Section */}
+        {/* Footer */}
+        {/* End page content */}
       </div>
     </div>
   );
 };
 export default Admin;
-
