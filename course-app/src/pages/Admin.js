@@ -62,7 +62,7 @@ const Admin = () => {
               
             </i>
           </a>
-          <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+          <a className="delete" data-toggle="modal">
             <i className="material-icons" data-toggle="tooltip" title="Delete">
               
             </i>
@@ -122,7 +122,7 @@ const Admin = () => {
         </div>
         <div className="w3-bar-block">
           <a
-            href="#portfolio"
+
             onclick="w3_close()"
             className="w3-bar-item w3-button w3-padding w3-text-teal"
           >

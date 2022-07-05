@@ -53,7 +53,7 @@ const Home = () => {
               data.map((item, index) => {
                 return (
 
-                  <div className="col-lg-4 col-md-6 mb-4">
+                  <div key={index + 1} className="col-lg-4 col-md-6 mb-4">
 
                     <div className="rounded overflow-hidden mb-2">
                       <img class="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} />
@@ -68,7 +68,7 @@ const Home = () => {
                             {item.date.slice(0, 10)}
                           </small>
                         </div>
-                        <a className="h5" href>
+                        <a className="h5">
                           {item.name}
                         </a>
                         <div className="border-top mt-4 pt-4">

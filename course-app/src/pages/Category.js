@@ -40,7 +40,7 @@ const Category = () => {
 
             data.map((item, index) => {
               return (
-                <div className="col-lg-3 col-md-6 mb-4">
+                <div key={index + 1} className="col-lg-3 col-md-6 mb-4">
                   <Link to='/Coursecategory'>
                     <div className="cat-item position-relative overflow-hidden rounded mb-2">
                       <img class="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
