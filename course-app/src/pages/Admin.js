@@ -1,7 +1,15 @@
 import React from 'react';
 import './Admin.css';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import AdminModal from './AdminModal';
 
 const Admin = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
       <nav
@@ -76,6 +84,32 @@ const Admin = () => {
       />
       {/* !PAGE CONTENT! */}
       <div className="w3-main" style={{ marginLeft: '300px' }}>
+
+
+
+
+
+
+        <>
+          <Button variant="primary" onClick={handleShow}>
+            Launch demo modal
+          </Button>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <AdminModal />
+            </Modal.Body>
+            {/* <Modal.Footer>
+
+            </Modal.Footer> */}
+          </Modal>
+        </>
+
+
+
         {/* Header */}
         <header id="portfolio">
           <a href="#">
@@ -126,7 +160,7 @@ const Admin = () => {
                   </div>
                   <div className="col-xs-6">
                     <a
-                      href="#addEmployeeModal"
+                      onClick={handleShow}
                       className="btn btn-success"
                       data-toggle="modal"
                     >
@@ -171,187 +205,8 @@ const Admin = () => {
                     <td>(171) 555-2222</td>
                     <td>
                       <a
-                        href="#editEmployeeModal"
-                        className="edit"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Edit"
-                        >
-                          
-                        </i>
-                      </a>
-                      <a
-                        href="#deleteEmployeeModal"
-                        className="delete"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Delete"
-                        >
-                          
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="custom-checkbox">
-                        <input
-                          type="checkbox"
-                          id="checkbox2"
-                          name="options[]"
-                          defaultValue={1}
-                        />
-                        <label htmlFor="checkbox2" />
-                      </span>
-                    </td>
-                    <td>Dominique Perrier</td>
-                    <td>dominiqueperrier@mail.com</td>
-                    <td>Obere Str. 57, Berlin, Germany</td>
-                    <td>(313) 555-5735</td>
-                    <td>
-                      <a
-                        href="#editEmployeeModal"
-                        className="edit"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Edit"
-                        >
-                          
-                        </i>
-                      </a>
-                      <a
-                        href="#deleteEmployeeModal"
-                        className="delete"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Delete"
-                        >
-                          
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="custom-checkbox">
-                        <input
-                          type="checkbox"
-                          id="checkbox3"
-                          name="options[]"
-                          defaultValue={1}
-                        />
-                        <label htmlFor="checkbox3" />
-                      </span>
-                    </td>
-                    <td>Maria Anders</td>
-                    <td>mariaanders@mail.com</td>
-                    <td>25, rue Lauriston, Paris, France</td>
-                    <td>(503) 555-9931</td>
-                    <td>
-                      <a
-                        href="#editEmployeeModal"
-                        className="edit"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Edit"
-                        >
-                          
-                        </i>
-                      </a>
-                      <a
-                        href="#deleteEmployeeModal"
-                        className="delete"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Delete"
-                        >
-                          
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="custom-checkbox">
-                        <input
-                          type="checkbox"
-                          id="checkbox4"
-                          name="options[]"
-                          defaultValue={1}
-                        />
-                        <label htmlFor="checkbox4" />
-                      </span>
-                    </td>
-                    <td>Fran Wilson</td>
-                    <td>franwilson@mail.com</td>
-                    <td>C/ Araquil, 67, Madrid, Spain</td>
-                    <td>(204) 619-5731</td>
-                    <td>
-                      <a
-                        href="#editEmployeeModal"
-                        className="edit"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Edit"
-                        >
-                          
-                        </i>
-                      </a>
-                      <a
-                        href="#deleteEmployeeModal"
-                        className="delete"
-                        data-toggle="modal"
-                      >
-                        <i
-                          className="material-icons"
-                          data-toggle="tooltip"
-                          title="Delete"
-                        >
-                          
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="custom-checkbox">
-                        <input
-                          type="checkbox"
-                          id="checkbox5"
-                          name="options[]"
-                          defaultValue={1}
-                        />
-                        <label htmlFor="checkbox5" />
-                      </span>
-                    </td>
-                    <td>Martin Blank</td>
-                    <td>martinblank@mail.com</td>
-                    <td>Via Monte Bianco 34, Turin, Italy</td>
-                    <td>(480) 631-2097</td>
-                    <td>
-                      <a
-                        href="#editEmployeeModal"
+                        onClick={handleShow}
+
                         className="edit"
                         data-toggle="modal"
                       >
@@ -424,115 +279,11 @@ const Admin = () => {
           </div>
         </div>
         {/* Edit Modal HTML */}
-        <div id="addEmployeeModal" className="modal fade">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <form>
-                <div className="modal-header">
-                  <h4 className="modal-title">Add Employee</h4>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-hidden="true"
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <div className="form-group">
-                    <label>Name</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Address</label>
-                    <textarea
-                      className="form-control"
-                      required
-                      defaultValue={''}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Phone</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <input
-                    type="button"
-                    className="btn btn-default"
-                    data-dismiss="modal"
-                    defaultValue="Cancel"
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-success"
-                    defaultValue="Add"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+
         {/* Edit Modal HTML */}
-        <div id="editEmployeeModal" className="modal fade">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <form>
-                <div className="modal-header">
-                  <h4 className="modal-title">Edit Employee</h4>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-hidden="true"
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <div className="form-group">
-                    <label>Name</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Address</label>
-                    <textarea
-                      className="form-control"
-                      required
-                      defaultValue={''}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Phone</label>
-                    <input type="text" className="form-control" required />
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <input
-                    type="button"
-                    className="btn btn-default"
-                    data-dismiss="modal"
-                    defaultValue="Cancel"
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-info"
-                    defaultValue="Save"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+
+
+
         {/* table Admin */}
         {/* Pagination */}
         <div className="w3-center w3-padding-32">
@@ -557,12 +308,10 @@ const Admin = () => {
             </a>
           </div>
         </div>
-        {/* Images of Me */}
-        {/* Contact Section */}
-        {/* Footer */}
-        {/* End page content */}
+
       </div>
     </div>
   );
 };
 export default Admin;
+
