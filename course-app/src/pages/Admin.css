@@ -115,7 +115,9 @@ table.table .avatar {
   vertical-align: middle;
   margin-right: 10px;
 }
-
+.w3-hover-opacity {
+  margin-right: 5px;
+}
 .pagination {
   float: right;
   margin: 0 0 5px;
