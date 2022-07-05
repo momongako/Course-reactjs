@@ -70,7 +70,7 @@ const Home = () => {
                           <h6 className="m-0">
                             <i className="fa fa-star text-primary mr-2" />
                             4.5
-                            <small>(250)</small>
+                            <small>({item.level})</small>
                           </h6>
                           <h5 className="m-0">${item.price}</h5>
                         </div>

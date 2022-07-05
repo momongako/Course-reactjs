@@ -53,7 +53,7 @@ const Header = () => {
                   Danh mục
                 </Link>
                 <Link to="detail" className="nav-item nav-link">
-                  Teachers
+                  Test Chi tiết
                 </Link>
                 <Link to="about" className="nav-item nav-link">
                   About
