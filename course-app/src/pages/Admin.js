@@ -91,9 +91,6 @@ const Admin = () => {
 
 
         <>
-          <Button variant="primary" onClick={handleShow}>
-            Launch demo modal
-          </Button>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
