@@ -49,7 +49,9 @@ const Home = () => {
             {data && data.length > 0 ?
               data.map((item, index) => {
                 return (
+
                   <div className="col-lg-4 col-md-6 mb-4">
+
                     <div className="rounded overflow-hidden mb-2">
                       <img class="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} />
                       <div className="bg-secondary p-4">
@@ -78,7 +80,9 @@ const Home = () => {
                         </div>
                       </div>
                     </div>
+
                   </div>
+
                 )
               })
               :

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Category = () => {
 
@@ -40,13 +41,15 @@ const Category = () => {
             data.map((item, index) => {
               return (
                 <div className="col-lg-3 col-md-6 mb-4">
-                  <div className="cat-item position-relative overflow-hidden rounded mb-2">
-                    <img class="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
-                    <a className="cat-overlay text-white text-decoration-none" href>
-                      <h4 className="text-white font-weight-medium">Web Design</h4>
-                      <span>100 Courses</span>
-                    </a>
-                  </div>
+                  <Link to='/Coursecategory'>
+                    <div className="cat-item position-relative overflow-hidden rounded mb-2">
+                      <img class="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
+                      <a className="cat-overlay text-white text-decoration-none" href>
+                        <h4 className="text-white font-weight-medium">Web Design</h4>
+                        <span>100 Courses</span>
+                      </a>
+                    </div>
+                  </Link>
                 </div>
               )
             })
