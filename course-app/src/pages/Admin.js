@@ -133,13 +133,6 @@ const Admin = () => {
                       <i className="material-icons"></i>{' '}
                       <span>Add New Employee</span>
                     </a>
-                    <a
-                      href="#deleteEmployeeModal"
-                      className="btn btn-danger"
-                      data-toggle="modal"
-                    >
-                      <i className="material-icons"></i> <span>Delete</span>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -534,45 +527,6 @@ const Admin = () => {
                     type="submit"
                     className="btn btn-info"
                     defaultValue="Save"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        {/* Delete Modal HTML */}
-        <div id="deleteEmployeeModal" className="modal fade">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <form>
-                <div className="modal-header">
-                  <h4 className="modal-title">Delete Employee</h4>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-hidden="true"
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <p>Are you sure you want to delete these Records?</p>
-                  <p className="text-warning">
-                    <small>This action cannot be undone.</small>
-                  </p>
-                </div>
-                <div className="modal-footer">
-                  <input
-                    type="button"
-                    className="btn btn-default"
-                    data-dismiss="modal"
-                    defaultValue="Cancel"
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-danger"
-                    defaultValue="Delete"
                   />
                 </div>
               </form>
