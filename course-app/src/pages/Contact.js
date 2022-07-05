@@ -80,7 +80,7 @@ const Contact = () => {
               <label htmlFor="sub">Tiêu đề</label>
               <input type="text" className="ipbox" id="sub" name="subject" />
               <label htmlFor="yourm">Nội dung</label>
-              <textarea rows={5} id="yourm" name="message" defaultValue={''} />
+              <textarea rows={3} id="yourm" className="ipbox"  />
               <div className="button">
                 <input
                   type="submit"

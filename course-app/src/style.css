@@ -11236,6 +11236,7 @@ button.btn.btn-primary.btn-lg.align-content-center a {
 
 .contact-sect .container-fluid {
   padding-top: 60px;
+  width: 70%;
 }
 
 .container-fluid .contact_location {
@@ -11270,7 +11271,7 @@ button.btn.btn-primary.btn-lg.align-content-center a {
 
 .container-fluid .map-grid .mapouter {
   position: relative;
-  height: 630px;
+  height: 580px;
 }
 
 .container-fluid .map-grid .mapouter .gmap_canvas {
@@ -11323,30 +11324,35 @@ button.btn.btn-primary.btn-lg.align-content-center a {
   border-radius: 5px;
   background-color: rgba(196, 14, 117, 0);
   box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 9%);
-  height: 48px;
+  height: 40px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.container-fluid .form-grid .form-group textarea {
+.container-fluid .form-grid .form-group textarea.ipbox {
   margin: 0;
   font-size: 14px;
   padding: 20px;
   margin-bottom: 20px;
   height: auto;
-  overflow: auto;
+  /* overflow: auto; */
   display: block;
   width: 100%;
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
-  background-color: #fff;
+  border-color: rgb(221, 221, 221);
+  background-color: rgba(196, 14, 117, 0);
+  box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 9%);
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: 4px;
+  border-radius: 5px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .container-fluid .form-grid .form-group input.ipbox:focus-visible {
+  outline: 0;
+}
+.container-fluid .form-grid .form-group textarea.ipbox:focus-visible {
   outline: 0;
 }
 
