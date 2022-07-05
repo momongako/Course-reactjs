@@ -76,10 +76,8 @@ const Admin = () => {
 
 
 
-
+      {/* component Modal */}
       <>
-
-
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
@@ -92,7 +90,7 @@ const Admin = () => {
             </Modal.Footer> */}
         </Modal>
       </>
-
+      {/* end component Modal */}
 
 
       <nav
