@@ -11,7 +11,7 @@ const Home = () => {
           type="button"
           className="btn btn-primary btn-lg align-content-center"
         >
-          <Link to="category">Courses</Link>
+          <Link to="category">Khóa Học</Link>
         </button>
       </div>
       <div className="container-fluid py-5">
