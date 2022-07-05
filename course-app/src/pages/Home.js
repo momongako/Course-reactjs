@@ -104,7 +104,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  IMG
+                  <img class="img-fluid" src={require(`./img/team-${1}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
@@ -135,7 +135,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  IMG
+                  <img class="img-fluid" src={require(`./img/team-${2}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
@@ -166,7 +166,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  IMG
+                  <img class="img-fluid" src={require(`./img/team-${3}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
@@ -197,7 +197,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  IMG
+                  <img class="img-fluid" src={require(`./img/team-${4}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
