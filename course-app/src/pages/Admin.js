@@ -37,7 +37,6 @@ const Admin = () => {
           <h4>
             <b>PORTFOLIO</b>
           </h4>
-          <p className="w3-text-grey">Template by W3.CSS</p>
         </div>
         <div className="w3-bar-block">
           <a
