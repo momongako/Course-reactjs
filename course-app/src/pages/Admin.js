@@ -94,7 +94,7 @@ const Admin = () => {
 
 
       <nav
-        className="w3-sidebar w3-collapse w3-white w3-animate-left"
+        className=" w3-collapse w3-animate-left"
         style={{ zIndex: 3, width: '300px', height: '46%' }}
         id="mySidebar"
       >

@@ -66,7 +66,7 @@ const Header = () => {
                 </Link>
               </div>
               <Link to="cart" className="btn btn-outline-info">
-                <i className="fas fa-shopping-cart" />
+                <i className="fas fa-shopping-cart" /><sup>0</sup>
               </Link>
             </div>
           </nav>
