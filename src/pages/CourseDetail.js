@@ -52,10 +52,20 @@ const CourseDetail = () => {
   listTodo = data.map((item, index) => (
 
 
-    <li className="justify-content-between d-flex">
-      <p>{item.section1Name || item.section2Name || item.section3Name || item.section4Name || item.section5Name || item.section6Name || item.section7Name || item.section8Name || item.section9Name}</p>
-      <a className="btn text-uppercase" href={`#chapter${index + 1}`} data-toggle="collapse" aria-expanded="false" >View Details</a>
-    </li>
+    <>
+
+      <li className="justify-content-between d-flex">
+        <p>{item.section1Name || item.section2Name || item.section3Name || item.section4Name || item.section5Name || item.section6Name || item.section7Name || item.section8Name || item.section9Name}</p>
+        <a className="btn text-uppercase" href={`#chapter${index + 1}`} data-toggle="collapse" aria-expanded="false" >View Details</a>
+      </li>
+      <div className="collapse in" id={`chapter${index + 1}`} aria-expanded="true" >
+        <li>{item.section1Content.map((element, indow) => (
+          <p>
+            {indow + 1} - {element}
+          </p>
+        ))}</li>
+      </div>
+    </>
 
 
 
@@ -143,7 +153,7 @@ const CourseDetail = () => {
 
 
 
-                      {data.map((item, index) => {
+                      {/* {data.map((item, index) => {
                         return (
 
                           <div className="collapse in" id={`chapter${index + 1}`} aria-expanded="true" >
@@ -151,7 +161,7 @@ const CourseDetail = () => {
                           </div>
 
                         )
-                      })}
+                      })} */}
                     </div>
 
 
