@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import moment from 'moment';
+import Loading from './Loading';
 const Home = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -98,7 +99,7 @@ const Home = () => {
                 )
               })
               :
-              'Loading....'
+              <Loading />
             }
             <div className='text-center'>
               <button type='button' className='btn' onClick={() => showMore()}>Xem thêm</button>
