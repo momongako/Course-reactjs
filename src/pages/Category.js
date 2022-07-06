@@ -8,7 +8,7 @@ const Category = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     console.log('app useeffect!!');
-    let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses';
+    let url = 'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse';
     // if (search.length > 0) {
     //     url = url + '?search=' + search;
     // }
