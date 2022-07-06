@@ -12,6 +12,12 @@ const CourseDetail = () => {
   const [data2, setData2] = useState([])
   const [data3, setData3] = useState([])
   const [data4, setData4] = useState([])
+  const [data5, setData5] = useState([])
+  const [data6, setData6] = useState([])
+  const [data7, setData7] = useState([])
+  const [data8, setData8] = useState([])
+  const [data9, setData9] = useState([])
+
   let navigate = useNavigate();
   useEffect(() => {
     console.log('user use effect!!');
@@ -40,6 +46,13 @@ const CourseDetail = () => {
         setData(data.content.section1.content);
         setData2(data.content.section2.content)
         setData3(data.content.section3.content)
+        setData4(data.content.section4.content)
+        setData5(data.content.section5.content)
+        setData6(data.content.section6.content)
+        setData7(data.content.section7.content)
+        setData8(data.content.section8.content)
+        setData9(data.content.section9.content)
+
       });
     console.log('check data', data)
 
@@ -166,28 +179,107 @@ const CourseDetail = () => {
 
                     <li className="justify-content-between d-flex">
                       <p>Tags and Attributes</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter3" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter3" aria-expanded="true" >
+                      {data4.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
                     <li className="justify-content-between d-flex">
                       <p>Basics of CSS</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter4" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter4" aria-expanded="true" >
+                      {data5.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
                     <li className="justify-content-between d-flex">
                       <p>Getting Familiar with CSS</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter5" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter5" aria-expanded="true" >
+                      {data6.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
                     <li className="justify-content-between d-flex">
                       <p>Introduction to Bootstrap</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter6" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter6" aria-expanded="true" >
+                      {data7.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
                     <li className="justify-content-between d-flex">
                       <p>Responsive Design</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter7" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter7" aria-expanded="true" >
+                      {data8.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
                     <li className="justify-content-between d-flex">
                       <p>Canvas in HTML 5</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter8" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter8" aria-expanded="true" >
+                      {data9.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
+
                   </ul>
 
 
@@ -230,7 +322,7 @@ const CourseDetail = () => {
                   </a>
                 </li>
               </ul>
-              <a href="#" className="btn text-uppercase enroll">Enroll the course</a>
+              <a href="#" className="btn text-uppercase enroll">Buy Course</a>
               <h4 className="title">Reviews</h4>
               <div className="content">
                 <div className="review-top row pt-40">
