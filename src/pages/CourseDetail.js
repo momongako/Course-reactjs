@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const CourseDetail = () => {
-  const params = useParams();
+  const params = useParams('');
   const [course, setCourse] = useState(null);
   const [data, setData] = useState([])
   const [data2, setData2] = useState([])
@@ -17,8 +17,11 @@ const CourseDetail = () => {
   const [data7, setData7] = useState([])
   const [data8, setData8] = useState([])
   const [data9, setData9] = useState([])
+  const [datas, setDatas] = useState([]);
 
   let navigate = useNavigate();
+
+
   useEffect(() => {
     console.log('user use effect!!');
     let country_url =
@@ -42,25 +45,47 @@ const CourseDetail = () => {
     fetch(country_url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.content.section1.content);
-        setData(data.content.section1.content);
-        setData2(data.content.section2.content)
-        setData3(data.content.section3.content)
-        setData4(data.content.section4.content)
-        setData5(data.content.section5.content)
-        setData6(data.content.section6.content)
-        setData7(data.content.section7.content)
-        setData8(data.content.section8.content)
-        setData9(data.content.section9.content)
-
+        console.log(data.content);
+        setData(data.content)
+        // setData(data.content.section1.content);
+        // setData2(data.content.section2.content)
+        // setData3(data.content.section3.content)
+        // setData4(data.content.section4.content)
+        // setData5(data.content.section5.content)
+        // setData6(data.content.section6.content)
+        // setData7(data.content.section7.content)
+        // setData8(data.content.section8.content)
+        // setData9(data.content.section9.content)
       });
     console.log('check data', data)
 
   }, []);
 
+
+
+
+  var listTodo = [];
+  listTodo = data.map((item, index) => (
+
+
+    <li className="justify-content-between d-flex">
+      <p>{item.section1Name || item.section2Name || item.section3Name || item.section4Name || item.section5Name || item.section6Name || item.section7Name || item.section8Name || item.section9Name}</p>
+      <a className="btn text-uppercase" href={`#chapter${index + 1}`} data-toggle="collapse" aria-expanded="false" >View Details</a>
+    </li>
+
+
+
+
+  ))
+
+  console.log('check course : ', data[0]) // = section1Name
+
+
+
+
+
   return (
     <section className="course-details-area section-gap">
-
       <div className="top-container dark-background">
         <div className="dark-background-inner-position-container">
           <div className="udlite-text-sm clp-lead">
@@ -126,8 +151,34 @@ const CourseDetail = () => {
                 <h4 className="title">Course Outline</h4>
                 <div className="content">
 
-
                   <ul className="course-list">
+                    <div>
+                      {listTodo}
+
+
+
+
+
+                      {data.map((item, index) => {
+                        return (
+
+                          <div className="collapse in" id={`chapter${index + 1}`} aria-expanded="true" >
+                            <p>{index + 1} - <li>{item.section1Content}</li></p>
+                          </div>
+
+                        )
+                      })}
+                    </div>
+
+
+
+                  </ul>
+
+
+
+                  {/* <button onClick={loopdata}>ok</button>
+                  {listTodo} */}
+                  {/* <ul className="course-list">
                     <li className="justify-content-between d-flex">
                       <p>Introduction Lesson</p>
                       <a className="btn text-uppercase" href="#chapter0" data-toggle="collapse" aria-expanded="false" >View Details</a>
@@ -280,7 +331,7 @@ const CourseDetail = () => {
                     </li>
 
 
-                  </ul>
+                  </ul> */}
 
 
 
