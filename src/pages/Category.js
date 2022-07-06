@@ -43,11 +43,11 @@ const Category = () => {
                 <div key={index + 1} className="col-lg-3 col-md-6 mb-4">
                   <Link to='/Coursecategory'>
                     <div className="cat-item position-relative overflow-hidden rounded mb-2">
-                      <img class="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
-                      <a className="cat-overlay text-white text-decoration-none" href>
+                      <img className="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
+                      <div className="cat-overlay text-white text-decoration-none">
                         <h4 className="text-white font-weight-medium">Web Design</h4>
                         <span>100 Courses</span>
-                      </a>
+                      </div>
                     </div>
                   </Link>
                 </div>

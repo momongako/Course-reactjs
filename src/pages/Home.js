@@ -56,7 +56,7 @@ const Home = () => {
                   <div key={index + 1} className="col-lg-4 col-md-6 mb-4">
 
                     <div className="rounded overflow-hidden mb-2">
-                      <img class="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} />
+                      <img className="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} />
                       <div className="bg-secondary p-4">
                         <div className="d-flex justify-content-between mb-3">
                           <small className="m-0">
@@ -111,7 +111,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  <img class="img-fluid" src={require(`./img/team-${1}.jpg`)} />
+                  <img className="img-fluid" src={require(`./img/team-${1}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
@@ -142,7 +142,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  <img class="img-fluid" src={require(`./img/team-${2}.jpg`)} />
+                  <img className="img-fluid" src={require(`./img/team-${2}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
@@ -173,7 +173,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  <img class="img-fluid" src={require(`./img/team-${3}.jpg`)} />
+                  <img className="img-fluid" src={require(`./img/team-${3}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
@@ -204,7 +204,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-3 text-center team mb-4">
               <div className="team-item rounded overflow-hidden mb-2">
                 <div className="team-img position-relative">
-                  <img class="img-fluid" src={require(`./img/team-${4}.jpg`)} />
+                  <img className="img-fluid" src={require(`./img/team-${4}.jpg`)} />
                   <div className="team-social">
                     <a
                       className="btn btn-outline-light btn-square mx-1"
