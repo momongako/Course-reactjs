@@ -5,7 +5,7 @@ import './Admin.css';
 import ReactPaginate from 'react-paginate';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import AdminModal from './AdminModal';
+import AdminModal from '../components/AdminModal';
 
 const Admin = () => {
   const [products, setProducts] = useState(null);
@@ -49,8 +49,8 @@ const Admin = () => {
 
   var products_list = [];
   if (currentItems != null) {
-    products_list = currentItems.map((item) => (
-      <tr>
+    products_list = currentItems.map((item,key) => (
+      <tr key={key}>
         <td>{item.id}</td>
         <td>{item.name}</td>
         <td>{item.email}</td>
@@ -102,7 +102,7 @@ const Admin = () => {
         <div className="w3-container">
           <a
             href="#"
-            onclick="w3_close()"
+            onClick="w3_close()"
             className="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
             title="close menu"
           >
@@ -123,7 +123,7 @@ const Admin = () => {
         <div className="w3-bar-block">
           <a
 
-            onclick="w3_close()"
+            onClick="w3_close()"
             className="w3-bar-item w3-button w3-padding w3-text-teal"
           >
             <i className="fa fa-th-large fa-fw w3-margin-right" />
@@ -131,7 +131,7 @@ const Admin = () => {
           </a>
           <a
             href="#about"
-            onclick="w3_close()"
+            onClick="w3_close()"
             className="w3-bar-item w3-button w3-padding"
           >
             <i className="fa fa-user fa-fw w3-margin-right" />
@@ -139,7 +139,7 @@ const Admin = () => {
           </a>
           <a
             href="#contact"
-            onclick="w3_close()"
+            onClick="w3_close()"
             className="w3-bar-item w3-button w3-padding"
           >
             <i className="fa fa-envelope fa-fw w3-margin-right" />
@@ -158,7 +158,7 @@ const Admin = () => {
       {/* Overlay effect when opening sidebar on small screens */}
       <div
         className="w3-overlay w3-hide-large w3-animate-opacity"
-        onclick="w3_close()"
+        onClick="w3_close()"
         style={{ cursor: 'pointer' }}
         title="close side menu"
         id="myOverlay"
@@ -176,7 +176,7 @@ const Admin = () => {
           </a>
           <span
             className="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey"
-            onclick="w3_open()"
+            onClick="w3_open()"
           >
             <i className="fa fa-bars" />
           </span>

@@ -132,7 +132,7 @@ const CourseDetail = () => {
                       <p>Introduction Lesson</p>
                       <a className="btn text-uppercase" href="#chapter0" data-toggle="collapse" aria-expanded="false" >View Details</a>
                     </li>
-                    <li class="collapse in" id="chapter0" aria-expanded="true" >
+                    <li className="collapse in" id="chapter0" aria-expanded="true" >
                       {data.map((item, index) => {
                         return (
                           <>
@@ -148,7 +148,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter1" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter1" aria-expanded="true" >
+                    <li className="collapse in" id="chapter1" aria-expanded="true" >
                       {data2.map((item, index) => {
                         return (
                           <>
@@ -165,7 +165,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter2" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter2" aria-expanded="true" >
+                    <li className="collapse in" id="chapter2" aria-expanded="true" >
                       {data3.map((item, index) => {
                         return (
                           <>
@@ -182,7 +182,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter3" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter3" aria-expanded="true" >
+                    <li className="collapse in" id="chapter3" aria-expanded="true" >
                       {data4.map((item, index) => {
                         return (
                           <>
@@ -199,7 +199,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter4" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter4" aria-expanded="true" >
+                    <li className="collapse in" id="chapter4" aria-expanded="true" >
                       {data5.map((item, index) => {
                         return (
                           <>
@@ -216,7 +216,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter5" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter5" aria-expanded="true" >
+                    <li className="collapse in" id="chapter5" aria-expanded="true" >
                       {data6.map((item, index) => {
                         return (
                           <>
@@ -233,7 +233,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter6" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter6" aria-expanded="true" >
+                    <li className="collapse in" id="chapter6" aria-expanded="true" >
                       {data7.map((item, index) => {
                         return (
                           <>
@@ -250,7 +250,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter7" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter7" aria-expanded="true" >
+                    <li className="collapse in" id="chapter7" aria-expanded="true" >
                       {data8.map((item, index) => {
                         return (
                           <>
@@ -267,7 +267,7 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#chapter8" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
 
-                    <li class="collapse in" id="chapter8" aria-expanded="true" >
+                    <li className="collapse in" id="chapter8" aria-expanded="true" >
                       {data9.map((item, index) => {
                         return (
                           <>
@@ -289,7 +289,7 @@ const CourseDetail = () => {
             </div>
             <div className="col-lg-4 right-contents">
               <span className="intro-asset--img-aspect--1UbeZ">
-                <img class="img-fluid" src={require(`./img/course-${course.id}.jpg`)}
+                <img className="img-fluid" src={require(`./img/course-${course.id}.jpg`)}
                   alt="" width={350} height={200} style={{ backgroundSize: 'cover', backgroundImage: 'url("data:image/png' }}
                 />
 
@@ -375,7 +375,7 @@ const CourseDetail = () => {
                     <div className="single-comment single-reviews justify-content-between d-flex">
                       <div className="user justify-content-between d-flex">
                         <div className="thumb">
-                          <img src="img/blog/c1.jpg" alt="" data-pagespeed-url-hash={837045043} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                          <img src="img/blog/c1.jpg" alt="" data-pagespeed-url-hash={837045043} onLoad="pagespeed.CriticalImages.checkImageForCriticality(this);" />
                         </div>
                         <div className="desc">
                           <h5><a href="#">Emilly Blunt</a>
@@ -399,7 +399,7 @@ const CourseDetail = () => {
                     <div className="single-comment single-reviews justify-content-between d-flex">
                       <div className="user justify-content-between d-flex">
                         <div className="thumb">
-                          <img src="img/blog/c2.jpg" alt="" data-pagespeed-url-hash={1131544964} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                          <img src="img/blog/c2.jpg" alt="" data-pagespeed-url-hash={1131544964} onLoad="pagespeed.CriticalImages.checkImageForCriticality(this);" />
                         </div>
                         <div className="desc">
                           <h5><a href="#">Elsie Cunningham</a>
@@ -423,7 +423,7 @@ const CourseDetail = () => {
                     <div className="single-comment single-reviews justify-content-between d-flex">
                       <div className="user justify-content-between d-flex">
                         <div className="thumb">
-                          <img src="img/blog/c3.jpg" alt="" data-pagespeed-url-hash={1426044885} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                          <img src="img/blog/c3.jpg" alt="" data-pagespeed-url-hash={1426044885} onLoad="pagespeed.CriticalImages.checkImageForCriticality(this);" />
                         </div>
                         <div className="desc">
                           <h5><a href="#">Maria Luna</a>
