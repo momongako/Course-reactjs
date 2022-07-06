@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 const CourseDetail = () => {
   const params = useParams();
   const [course, setCourse] = useState(null);
+  const [data, setData] = useState([])
+  const [data2, setData2] = useState([])
+  const [data3, setData3] = useState([])
+  const [data4, setData4] = useState([])
   let navigate = useNavigate();
   useEffect(() => {
     console.log('user use effect!!');
@@ -20,8 +24,27 @@ const CourseDetail = () => {
       .then((data) => {
         console.log(data);
         setCourse(data);
+
       });
   }, []);
+  useEffect(() => {
+    console.log('user use effect!!');
+    let country_url =
+      'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse/' + params.id;
+
+    console.log(country_url);
+    fetch(country_url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.content.section1.content);
+        setData(data.content.section1.content);
+        setData2(data.content.section2.content)
+        setData3(data.content.section3.content)
+      });
+    console.log('check data', data)
+
+  }, []);
+
   return (
     <section className="course-details-area section-gap">
 
@@ -89,19 +112,58 @@ const CourseDetail = () => {
                 </div>
                 <h4 className="title">Course Outline</h4>
                 <div className="content">
+
+
                   <ul className="course-list">
                     <li className="justify-content-between d-flex">
                       <p>Introduction Lesson</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter0" data-toggle="collapse" aria-expanded="false" >View Details</a>
+                    </li>
+                    <li class="collapse in" id="chapter0" aria-expanded="true" >
+                      {data.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
                     </li>
                     <li className="justify-content-between d-flex">
                       <p>Basics of HTML</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter1" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter1" aria-expanded="true" >
+                      {data2.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
                     <li className="justify-content-between d-flex">
                       <p>Getting Know about HTML</p>
-                      <a className="btn text-uppercase" href="#">View Details</a>
+                      <a className="btn text-uppercase" href="#chapter2" data-toggle="collapse" aria-expanded="false">View Details</a>
                     </li>
+
+                    <li class="collapse in" id="chapter2" aria-expanded="true" >
+                      {data3.map((item, index) => {
+                        return (
+                          <>
+                            <p>{index + 1} - {item}</p>
+
+                          </>
+                        )
+                      })}
+
+                    </li>
+
                     <li className="justify-content-between d-flex">
                       <p>Tags and Attributes</p>
                       <a className="btn text-uppercase" href="#">View Details</a>
@@ -127,6 +189,9 @@ const CourseDetail = () => {
                       <a className="btn text-uppercase" href="#">View Details</a>
                     </li>
                   </ul>
+
+
+
                 </div>
               </div>
             </div>

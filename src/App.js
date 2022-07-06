@@ -33,7 +33,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="detail" element={<CourseDetail />} />
+          <Route path="detail/:id" element={<CourseDetail />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<Checkout />} />
