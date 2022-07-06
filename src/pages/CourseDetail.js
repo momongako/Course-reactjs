@@ -100,47 +100,14 @@ const CourseDetail = () => {
               <div className="content-wrapper">
                 <h4 className="title">Objectives</h4>
                 <div className="content">
-                  When you enter into any new area of science, you almost always find yourself with a
-                  baffling new language of
-                  technical terms to learn before you can converse with the experts. This is certainly
-                  true in astronomy both in
-                  terms of terms that refer to the cosmos and terms that describe the tools of the trade,
-                  the most prevalent
-                  being the telescope.
+                  {course.description}
                   <br />
                   <br />
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                  ut aliquip ex ea
-                  commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum. Lorem ipsum dolor sit
-                  amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim
-                  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum.
+                  {course.description2}
                 </div>
                 <h4 className="title">Eligibility</h4>
                 <div className="content">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                  ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
-                  <br />
-                  <br />
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                  ut aliquip ex ea
-                  commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum. Lorem ipsum dolor sit
-                  amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim
-                  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum.
+                  {course.description3}
                 </div>
                 <h4 className="title">Course Outline</h4>
                 <div className="content">
