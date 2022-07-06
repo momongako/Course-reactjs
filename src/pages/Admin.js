@@ -16,8 +16,6 @@ const Admin = () => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(-1);
   const [show, setShow] = useState(false);
-  
-  console.log('Admin 1',data)
 
   useEffect(()=>{
     setProducts(data);
@@ -71,8 +69,7 @@ const Admin = () => {
   }
   
   return (
-    <>
-    {products!==null?(
+    products!==null?(
       <div>
       <>
         <Modal show={show} onHide={handleClose}>
@@ -82,9 +79,6 @@ const Admin = () => {
           <Modal.Body>
             <AdminModal />
           </Modal.Body>
-          {/* <Modal.Footer>
-
-            </Modal.Footer> */}
         </Modal>
       </>
       <nav
@@ -149,7 +143,7 @@ const Admin = () => {
           <i className="fa fa-linkedin w3-hover-opacity" />
         </div>
       </nav>
-      {/* Overlay effect when opening sidebar on small screens */}
+
       <div
         className="w3-overlay w3-hide-large w3-animate-opacity"
         onClick="w3_close()"
@@ -157,9 +151,9 @@ const Admin = () => {
         title="close side menu"
         id="myOverlay"
       />
-      {/* !PAGE CONTENT! */}
+
       <div className="w3-main" style={{ marginLeft: '300px' }}>
-        {/* Header */}
+
         <header id="portfolio">
           <a href="#">
             <img
@@ -196,7 +190,7 @@ const Admin = () => {
             </div>
           </div>
         </header>
-        {/* table  Admin*/}
+
         <div className="container">
           <div className="table-responsive">
             <div className="table-wrapper">
@@ -235,7 +229,7 @@ const Admin = () => {
               </table>
               <div className="clearfix">
                 <div className="hint-text">
-                  Showing <b>5</b> out of <b>25</b> entries
+                  Showing <b>5</b> out of <b>{products.length}</b> entries
                 </div>
 
                 <ReactPaginate
@@ -262,17 +256,21 @@ const Admin = () => {
             </div>
           </div>
         </div>
-
-        {/* Edit Modal HTML */}
-
-        {/* table Admin */}
-        {/* Contact Section */}
-        {/* Footer */}
-        {/* End page content */}
       </div>
-    </div>):<div><h1>loading</h1></div>}
-    
-    </>
+    </div>)
+    :
+    (
+      <div class="text-center">
+            <button class="btn btn-primary" type="button" disabled>
+              <span
+                class="spinner-grow spinner-grow-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Loading...
+            </button>
+          </div>
+    )
   );
 };
 export default Admin;
