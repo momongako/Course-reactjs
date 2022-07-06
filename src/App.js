@@ -61,6 +61,7 @@ export default function App() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="category" element={<Category />} />
           <Route path="admin" element={<Admin />} />
+          <Route path='detail/:id' element={<CourseDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
