@@ -1,12 +1,13 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import './Admin.css';
-import ReactPaginate from 'react-paginate';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import AdminModal from '../components/AdminModal';
+import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import "./Admin.css";
+import ReactPaginate from "react-paginate";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import AdminModal from "../components/AdminModal";
 import { useSelector, useDispatch } from "react-redux";
+
 
 const Admin = () => {
   const data = useSelector((state) => state.courses.courseData);
@@ -17,11 +18,12 @@ const Admin = () => {
   const [page, setPage] = useState(-1);
   const [show, setShow] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setProducts(data);
     if (products != null) {
-      setPage(0);}
-  },[data])
+      setPage(0);
+    }
+  }, [data]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,8 +46,8 @@ const Admin = () => {
   };
 
   var products_list = [];
-  if (products !== null&&currentItems!==null) {
-    products_list = currentItems.map((item,key) => (
+  if (products !== null && currentItems !== null) {
+    products_list = currentItems.map((item, key) => (
       <tr key={key}>
         <td>{item.id}</td>
         <td>{item.name}</td>
@@ -67,10 +69,9 @@ const Admin = () => {
       </tr>
     ));
   }
-  
-  return (
-    products!==null?(
-      <div>
+
+  return products !== null ? (
+    <div>
       <>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -83,7 +84,7 @@ const Admin = () => {
       </>
       <nav
         className=" w3-collapse w3-animate-left"
-        style={{ zIndex: 3, width: '300px', height: '46%' }}
+        style={{ zIndex: 3, width: "300px", height: "46%" }}
         id="mySidebar"
       >
         <br />
@@ -98,7 +99,7 @@ const Admin = () => {
           </a>
           <img
             src="https://www.w3schools.com/w3images/avatar_g2.jpg"
-            style={{ width: '45%' }}
+            style={{ width: "45%" }}
             className="w3-round"
           />
           <br />
@@ -110,7 +111,6 @@ const Admin = () => {
         </div>
         <div className="w3-bar-block">
           <a
-
             onClick="w3_close()"
             className="w3-bar-item w3-button w3-padding w3-text-teal"
           >
@@ -147,18 +147,17 @@ const Admin = () => {
       <div
         className="w3-overlay w3-hide-large w3-animate-opacity"
         onClick="w3_close()"
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
         title="close side menu"
         id="myOverlay"
       />
 
-      <div className="w3-main" style={{ marginLeft: '300px' }}>
-
+      <div className="w3-main" style={{ marginLeft: "300px" }}>
         <header id="portfolio">
           <a href="#">
             <img
               src="img/blog-1.jpg"
-              style={{ width: '65px' }}
+              style={{ width: "65px" }}
               className="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"
             />
           </a>
@@ -170,7 +169,7 @@ const Admin = () => {
           </span>
           <div className="w3-container">
             <h1>
-              <b>My Portfolio</b>
+              <b>Trang quản lý</b>
             </h1>
             <div className="w3-section w3-bottombar w3-padding-16">
               <span className="w3-margin-right">Filter:</span>
@@ -207,14 +206,13 @@ const Admin = () => {
                       className="btn btn-success"
                       data-toggle="modal"
                     >
-                      <i className="material-icons"></i>{' '}
+                      <i className="material-icons"></i>{" "}
                       <span>Add New Employee</span>
                     </a>
-
                   </div>
                 </div>
               </div>
-              <table className="table table-striped table-hover">
+              {/* <table className="table table-striped table-hover">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -225,8 +223,205 @@ const Admin = () => {
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>{products!==null?products_list:(<tr><td>LOADING...</td></tr>)}</tbody>
-              </table>
+                <tbody>{products_list}</tbody>
+              </table> */}
+              {/* ---------------------------------------------------------------------------------------------------- */}
+              <div className="card-body">
+                <div className="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                  <div className="dataTable-top">
+                    <div className="dataTable-dropdown">
+                      <label>
+                        <select className="dataTable-selector">
+                          <option value={5}>5</option>
+                          <option value={10} selected>
+                            10
+                          </option>
+                          <option value={15}>15</option>
+                          <option value={20}>20</option>
+                          <option value={25}>25</option>
+                        </select>
+                        entries per page
+                      </label>
+                    </div>
+                    <div className="dataTable-search">
+                      <input
+                        className="dataTable-input"
+                        placeholder="Search..."
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div className="dataTable-container">
+                    <table id="datatablesSimple" className="dataTable-table">
+                      <thead>
+                        <tr>
+                          <th data-sortable style={{ width: "19.6115%" }}>
+                            <a href="#" className="dataTable-sorter">
+                              Name
+                            </a>
+                          </th>
+                          <th
+                            data-sortable
+                            style={{ width: "28.9474%" }}
+                            className="desc"
+                          >
+                            <a href="#" className="dataTable-sorter">
+                              Position
+                            </a>
+                          </th>
+                          <th data-sortable style={{ width: "15.6015%" }}>
+                            <a href="#" className="dataTable-sorter">
+                              Office
+                            </a>
+                          </th>
+                          <th data-sortable style={{ width: "9.14787%" }}>
+                            <a href="#" className="dataTable-sorter">
+                              Age
+                            </a>
+                          </th>
+                          <th data-sortable style={{ width: "15.2256%" }}>
+                            <a href="#" className="dataTable-sorter">
+                              Start date
+                            </a>
+                          </th>
+                          <th data-sortable style={{ width: "11.4662%" }}>
+                            <a href="#" className="dataTable-sorter">
+                              Salary
+                            </a>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Prescott Bartlett</td>
+                          <td>Technical Author</td>
+                          <td>London</td>
+                          <td>27</td>
+                          <td>2011/05/07</td>
+                          <td>$145,000</td>
+                        </tr>
+                        <tr>
+                          <td>Gavin Cortez</td>
+                          <td>Team Leader</td>
+                          <td>San Francisco</td>
+                          <td>22</td>
+                          <td>2008/10/26</td>
+                          <td>$235,500</td>
+                        </tr>
+                        <tr>
+                          <td>Gloria Little</td>
+                          <td>Systems Administrator</td>
+                          <td>New York</td>
+                          <td>59</td>
+                          <td>2009/04/10</td>
+                          <td>$237,500</td>
+                        </tr>
+                        <tr>
+                          <td>Lael Greer</td>
+                          <td>Systems Administrator</td>
+                          <td>London</td>
+                          <td>21</td>
+                          <td>2009/02/27</td>
+                          <td>$103,500</td>
+                        </tr>
+                        <tr>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011/04/25</td>
+                          <td>$320,800</td>
+                        </tr>
+                        <tr>
+                          <td>Quinn Flynn</td>
+                          <td>Support Lead</td>
+                          <td>Edinburgh</td>
+                          <td>22</td>
+                          <td>2013/03/03</td>
+                          <td>$342,000</td>
+                        </tr>
+                        <tr>
+                          <td>Olivia Liang</td>
+                          <td>Support Engineer</td>
+                          <td>Singapore</td>
+                          <td>64</td>
+                          <td>2011/02/03</td>
+                          <td>$234,500</td>
+                        </tr>
+                        <tr>
+                          <td>Sakura Yamamoto</td>
+                          <td>Support Engineer</td>
+                          <td>Tokyo</td>
+                          <td>37</td>
+                          <td>2009/08/19</td>
+                          <td>$139,575</td>
+                        </tr>
+                        <tr>
+                          <td>Finn Camacho</td>
+                          <td>Support Engineer</td>
+                          <td>San Francisco</td>
+                          <td>47</td>
+                          <td>2009/07/07</td>
+                          <td>$87,500</td>
+                        </tr>
+                        <tr>
+                          <td>Sonya Frost</td>
+                          <td>Software Engineer</td>
+                          <td>Edinburgh</td>
+                          <td>23</td>
+                          <td>2008/12/13</td>
+                          <td>$103,600</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="dataTable-bottom">
+                    <div className="dataTable-info">
+                      Showing 1 to 10 of 57 entries
+                    </div>
+                    <nav className="dataTable-pagination">
+                      <ul className="dataTable-pagination-list">
+                        <li className="active">
+                          <a href="#" data-page={1}>
+                            1
+                          </a>
+                        </li>
+                        <li className>
+                          <a href="#" data-page={2}>
+                            2
+                          </a>
+                        </li>
+                        <li className>
+                          <a href="#" data-page={3}>
+                            3
+                          </a>
+                        </li>
+                        <li className>
+                          <a href="#" data-page={4}>
+                            4
+                          </a>
+                        </li>
+                        <li className>
+                          <a href="#" data-page={5}>
+                            5
+                          </a>
+                        </li>
+                        <li className>
+                          <a href="#" data-page={6}>
+                            6
+                          </a>
+                        </li>
+                        <li className="pager">
+                          <a href="#" data-page={2}>
+                            ›
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              {/* END OF COPY */}
               <div className="clearfix">
                 <div className="hint-text">
                   Showing <b>5</b> out of <b>{products.length}</b> entries
@@ -257,20 +452,18 @@ const Admin = () => {
           </div>
         </div>
       </div>
-    </div>)
-    :
-    (
-      <div class="text-center">
-            <button class="btn btn-primary" type="button" disabled>
-              <span
-                class="spinner-grow spinner-grow-sm"
-                role="status"
-                aria-hidden="true"
-              ></span>
-              Loading...
-            </button>
-          </div>
-    )
+    </div>
+  ) : (
+    <div class="text-center">
+      <button class="btn btn-primary" type="button" disabled>
+        <span
+          class="spinner-grow spinner-grow-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        Loading...
+      </button>
+    </div>
   );
 };
 export default Admin;
