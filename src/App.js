@@ -12,29 +12,30 @@ import CourseDetail from "./pages/CourseDetail";
 import Admin from "./pages/Admin";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCourseData, fetchCourseActions,fetchCategoryActions } from "./store/Fetch";
+import { fetchCourseData, fetchCourseActions, fetchCategoryActions } from "./store/Fetch";
+import CourseCategory from "./pages/CourseCategory";
 
 export default function App() {
   const dispatch = useDispatch();
-  const [courseData,setCourseData] = useState(null)
-  const data=useSelector((state) => state.courses.courseData)
-  
+  const [courseData, setCourseData] = useState(null)
+  const data = useSelector((state) => state.courses.courseData)
+
   const requestData = () => {
     dispatch(fetchCourseActions.fetchDataPending);
     fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
       .then((response) => response.json())
       .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
-      .then (setCourseData(data))
+      .then(setCourseData(data))
       .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
   };
 
-  useEffect (() => {
+  useEffect(() => {
     requestData()
-  },[]);
+  }, []);
 
   useEffect(() => {
     setCourseData(data)
-    if (courseData!==null){requestCategories()}
+    if (courseData !== null) { requestCategories() }
   }, [data]);
 
 
@@ -51,7 +52,7 @@ export default function App() {
   }
 
 
-return (
+  return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -62,6 +63,7 @@ return (
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="category" element={<Category />} />
+          <Route path="courseCategory" element={<CourseCategory />} />
           <Route path="admin" element={<Admin />} />
           <Route path='detail/:id' element={<CourseDetail />} />
         </Route>

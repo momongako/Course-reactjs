@@ -41,7 +41,7 @@ const Category = () => {
             data.map((item, index) => {
               return (
                 <div key={index + 1} className="col-lg-3 col-md-6 mb-4">
-                  <Link to='/Coursecategory'>
+                  <Link to='/coursecategory'>
                     <div className="cat-item position-relative overflow-hidden rounded mb-2">
                       <img className="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
                       <div className="cat-overlay text-white text-decoration-none">
