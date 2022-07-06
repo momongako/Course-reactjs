@@ -54,35 +54,37 @@ const Home = () => {
                 return (
 
                   <div key={index + 1} className="col-lg-4 col-md-6 mb-4">
-
-                    <div className="rounded overflow-hidden mb-2">
-                      <img className="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} />
-                      <div className="bg-secondary p-4">
-                        <div className="d-flex justify-content-between mb-3">
-                          <small className="m-0">
-                            <i className="fa fa-users text-primary mr-2" />
-                            {item.rating} Students
-                          </small>
-                          <small className="m-0">
-                            <i className="far fa-clock text-primary mr-2" />
-                            {item.date.slice(0, 10)}
-                          </small>
-                        </div>
-                        <Link to={'/detail/' + item.id} className="h5">
-                          {item.name}
-                        </Link>
-                        <div className="border-top mt-4 pt-4">
-                          <div className="d-flex justify-content-between">
-                            <h6 className="m-0">
-                              <i className="fa fa-star text-primary mr-2" />
-                              4.5
-                              <small>({item.level})</small>
-                            </h6>
-                            <h5 className="m-0">${item.price}</h5>
+                    <Link to={'/detail/' + item.id} className="h5">
+                      <div className="rounded overflow-hidden mb-2">
+                        <img className="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} />
+                        <div className="bg-secondary p-4">
+                          <div className="d-flex justify-content-between mb-3">
+                            <small className="m-0">
+                              <i className="fa fa-users text-primary mr-2" />
+                              {item.rating} Students
+                            </small>
+                            <small className="m-0">
+                              <i className="far fa-clock text-primary mr-2" />
+                              {item.date.slice(0, 10)}
+                            </small>
+                          </div>
+                          <Link to={'/detail/' + item.id} className="h5">
+                            {item.name}
+                          </Link>
+                          <div className="border-top mt-4 pt-4">
+                            <div className="d-flex justify-content-between">
+                              <h6 className="m-0">
+                                <i className="fa fa-star text-primary mr-2" />
+                                4.5
+                                <small>({item.level})</small>
+                              </h6>
+                              <h5 className="m-0">${item.price}</h5>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
+
 
                   </div>
 
