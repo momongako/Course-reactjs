@@ -9,15 +9,7 @@ const CourseDetail = () => {
   const params = useParams('');
   const [course, setCourse] = useState(null);
   const [data, setData] = useState([])
-  const [data2, setData2] = useState([])
-  const [data3, setData3] = useState([])
-  const [data4, setData4] = useState([])
-  const [data5, setData5] = useState([])
-  const [data6, setData6] = useState([])
-  const [data7, setData7] = useState([])
-  const [data8, setData8] = useState([])
-  const [data9, setData9] = useState([])
-  const [datas, setDatas] = useState([]);
+
 
   let navigate = useNavigate();
 
@@ -47,15 +39,7 @@ const CourseDetail = () => {
       .then((data) => {
         console.log(data.content);
         setData(data.content)
-        // setData(data.content.section1.content);
-        // setData2(data.content.section2.content)
-        // setData3(data.content.section3.content)
-        // setData4(data.content.section4.content)
-        // setData5(data.content.section5.content)
-        // setData6(data.content.section6.content)
-        // setData7(data.content.section7.content)
-        // setData8(data.content.section8.content)
-        // setData9(data.content.section9.content)
+
       });
     console.log('check data', data)
 
