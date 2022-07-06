@@ -68,9 +68,9 @@ const Home = () => {
                             {item.date.slice(0, 10)}
                           </small>
                         </div>
-                        <a className="h5">
+                        <Link to={'/detail/' + item.id} className="h5">
                           {item.name}
-                        </a>
+                        </Link>
                         <div className="border-top mt-4 pt-4">
                           <div className="d-flex justify-content-between">
                             <h6 className="m-0">
