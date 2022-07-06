@@ -16,24 +16,27 @@ import { fetchCourseData, fetchCourseActions,fetchCategoryActions } from "./stor
 
 export default function App() {
   const dispatch = useDispatch();
+  const [courseData,setCourseData] = useState(null)
+  const data=useSelector((state) => state.courses.courseData)
   
   const requestData = () => {
     dispatch(fetchCourseActions.fetchDataPending);
     fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
       .then((response) => response.json())
       .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
+      .then (setCourseData(data))
       .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
   };
 
-  useEffect(() => {
-    requestData();
-  }, []);
-
-  const courseData = useSelector((state) => state.courses.courseData)
+  useEffect (() => {
+    requestData()
+  },[]);
 
   useEffect(() => {
+    setCourseData(data)
     if (courseData!==null){requestCategories()}
-  }, [courseData]);
+  }, [data]);
+
 
   const categories = [];
   const test = [];
@@ -48,8 +51,7 @@ export default function App() {
   }
 
 
-
-  return (
+return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>

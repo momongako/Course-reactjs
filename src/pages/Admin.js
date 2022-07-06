@@ -6,32 +6,30 @@ import ReactPaginate from 'react-paginate';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import AdminModal from '../components/AdminModal';
+import { useSelector, useDispatch } from "react-redux";
 
 const Admin = () => {
+  const data = useSelector((state) => state.courses.courseData);
+  const isPending = useSelector((state) => state.courses.isPending);
   const [products, setProducts] = useState(null);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(-1);
-
   const [show, setShow] = useState(false);
+  
+  console.log('Admin 1',data)
+
+  useEffect(()=>{
+    setProducts(data);
+    if (products != null) {
+      setPage(0);}
+  },[data])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  useEffect(() => {
-    let url = 'https://62b049c5e460b79df0422a91.mockapi.io/name';
-
-    fetch(url)
-      .then((Response) => Response.json())
-      .then((data) => {
-        setProducts(data);
-        if (data != null) {
-          setPage(0);
-        }
-      });
-  }, []);
 
   useEffect(() => {
-    if (products != null) {
+    if (products !== null) {
       let itemsPerPage = 5;
       const starOffset = page * itemsPerPage;
       let endOffset = (page + 1) * itemsPerPage;
@@ -48,7 +46,7 @@ const Admin = () => {
   };
 
   var products_list = [];
-  if (currentItems != null) {
+  if (products !== null&&currentItems!==null) {
     products_list = currentItems.map((item,key) => (
       <tr key={key}>
         <td>{item.id}</td>
@@ -71,12 +69,11 @@ const Admin = () => {
       </tr>
     ));
   }
+  
   return (
-    <div>
-
-
-
-      {/* component Modal */}
+    <>
+    {products!==null?(
+      <div>
       <>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -90,9 +87,6 @@ const Admin = () => {
             </Modal.Footer> */}
         </Modal>
       </>
-      {/* end component Modal */}
-
-
       <nav
         className=" w3-collapse w3-animate-left"
         style={{ zIndex: 3, width: '300px', height: '46%' }}
@@ -237,7 +231,7 @@ const Admin = () => {
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>{products_list}</tbody>
+                <tbody>{products!==null?products_list:(<tr><td>LOADING...</td></tr>)}</tbody>
               </table>
               <div className="clearfix">
                 <div className="hint-text">
@@ -276,7 +270,9 @@ const Admin = () => {
         {/* Footer */}
         {/* End page content */}
       </div>
-    </div>
+    </div>):<div><h1>loading</h1></div>}
+    
+    </>
   );
 };
 export default Admin;
