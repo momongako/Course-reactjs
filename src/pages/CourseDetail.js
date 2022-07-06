@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import moment from 'moment';
 const CourseDetail = () => {
   const params = useParams('');
   const [course, setCourse] = useState(null);
@@ -52,7 +52,7 @@ const CourseDetail = () => {
   listTodo = data.map((item, index) => (
 
 
-    <>
+    <div key={index + 1}>
 
       <li className="justify-content-between d-flex">
         <p>{item.section1Name || item.section2Name || item.section3Name || item.section4Name || item.section5Name || item.section6Name || item.section7Name || item.section8Name || item.section9Name}</p>
@@ -60,12 +60,12 @@ const CourseDetail = () => {
       </li>
       <div className="collapse in" id={`chapter${index + 1}`} aria-expanded="true" >
         <li>{item.section1Content.map((element, indow) => (
-          <p>
+          <p key={indow + 1}>
             {indow + 1} - {element}
           </p>
         ))}</li>
       </div>
-    </>
+    </div>
 
 
 
@@ -113,189 +113,10 @@ const CourseDetail = () => {
                 <div className="content">
 
                   <ul className="course-list">
-                    <div>
-                      {listTodo}
 
-
-
-
-
-                      {/* {data.map((item, index) => {
-                        return (
-
-                          <div className="collapse in" id={`chapter${index + 1}`} aria-expanded="true" >
-                            <p>{index + 1} - <li>{item.section1Content}</li></p>
-                          </div>
-
-                        )
-                      })} */}
-                    </div>
-
-
+                    {listTodo}
 
                   </ul>
-
-
-
-                  {/* <button onClick={loopdata}>ok</button>
-                  {listTodo} */}
-                  {/* <ul className="course-list">
-                    <li className="justify-content-between d-flex">
-                      <p>Introduction Lesson</p>
-                      <a className="btn text-uppercase" href="#chapter0" data-toggle="collapse" aria-expanded="false" >View Details</a>
-                    </li>
-                    <li className="collapse in" id="chapter0" aria-expanded="true" >
-                      {data.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-                    <li className="justify-content-between d-flex">
-                      <p>Basics of HTML</p>
-                      <a className="btn text-uppercase" href="#chapter1" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter1" aria-expanded="true" >
-                      {data2.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-                    <li className="justify-content-between d-flex">
-                      <p>Getting Know about HTML</p>
-                      <a className="btn text-uppercase" href="#chapter2" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter2" aria-expanded="true" >
-                      {data3.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-                    <li className="justify-content-between d-flex">
-                      <p>Tags and Attributes</p>
-                      <a className="btn text-uppercase" href="#chapter3" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter3" aria-expanded="true" >
-                      {data4.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-                    <li className="justify-content-between d-flex">
-                      <p>Basics of CSS</p>
-                      <a className="btn text-uppercase" href="#chapter4" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter4" aria-expanded="true" >
-                      {data5.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-                    <li className="justify-content-between d-flex">
-                      <p>Getting Familiar with CSS</p>
-                      <a className="btn text-uppercase" href="#chapter5" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter5" aria-expanded="true" >
-                      {data6.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-                    <li className="justify-content-between d-flex">
-                      <p>Introduction to Bootstrap</p>
-                      <a className="btn text-uppercase" href="#chapter6" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter6" aria-expanded="true" >
-                      {data7.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-                    <li className="justify-content-between d-flex">
-                      <p>Responsive Design</p>
-                      <a className="btn text-uppercase" href="#chapter7" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter7" aria-expanded="true" >
-                      {data8.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-                    <li className="justify-content-between d-flex">
-                      <p>Canvas in HTML 5</p>
-                      <a className="btn text-uppercase" href="#chapter8" data-toggle="collapse" aria-expanded="false">View Details</a>
-                    </li>
-
-                    <li className="collapse in" id="chapter8" aria-expanded="true" >
-                      {data9.map((item, index) => {
-                        return (
-                          <>
-                            <p>{index + 1} - {item}</p>
-
-                          </>
-                        )
-                      })}
-
-                    </li>
-
-
-                  </ul> */}
-
-
-
                 </div>
               </div>
             </div>
@@ -330,7 +151,7 @@ const CourseDetail = () => {
                 <li>
                   <a className="justify-content-between d-flex" href="#">
                     <p>Date Submitted </p>
-                    <span>{course.date.slice(0, 10)}</span>
+                    <span>{moment(course.date.slice(0, 10), 'DD-MM-YYYY').format('DD/MM/YYYY')}</span>
                   </a>
                 </li>
               </ul>
