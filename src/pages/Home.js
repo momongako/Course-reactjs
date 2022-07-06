@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+
 const Home = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -24,6 +25,11 @@ const Home = () => {
     console.log('>>> check dataUse : ', data);
 
   }, []);
+const [itemsToShow,setItemToShow] = useState(6);
+const showMore = () =>{
+  setItemToShow(itemsToShow + 6);
+
+}
 
   return (
     <div className="container">
@@ -36,6 +42,7 @@ const Home = () => {
           <Link to="category">Courses</Link>
         </button>
       </div>
+
       <div className="container-fluid py-5">
         <div className="container py-5">
           <div className="text-center mb-5">
@@ -50,7 +57,7 @@ const Home = () => {
           <div className="row">
 
             {data && data.length > 0 ?
-              data.map((item, index) => {
+              data.slice(0, itemsToShow).map((item, index) => {
                 return (
 
                   <div key={index + 1} className="col-lg-4 col-md-6 mb-4">
@@ -93,8 +100,9 @@ const Home = () => {
               :
               'Loading....'
             }
-
-
+            <div className='text-center'>
+            <button type='button' className='btn' onClick={() => showMore()}>Xem thêm</button>
+            </div>
           </div>
         </div>
       </div>
