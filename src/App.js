@@ -30,7 +30,6 @@ export default function App() {
   }, []);
 
   const courseData = useSelector((state) => state.courses.courseData)
-  console.log('courseData:',courseData);
 
   useEffect(() => {
     if (courseData!==null){requestCategories()}
@@ -45,7 +44,6 @@ export default function App() {
         categories.push({ name: item.category, picture: item.catPic });
       }
     });
-    console.log('App',categories);
     dispatch(fetchCategoryActions.updateCategories());
   }
 
