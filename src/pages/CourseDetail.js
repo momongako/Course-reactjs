@@ -24,6 +24,17 @@ const CourseDetail = () => {
   }, []);
   return (
     <section className="course-details-area section-gap">
+
+      <div className="top-container dark-background">
+        <div className="dark-background-inner-position-container">
+          <div className="udlite-text-sm clp-lead">
+            <h1 className="udlite-heading-xl clp-lead__title clp-lead__title--small" data-purpose="lead-title">Learn Python: The Complete Python Programming Course</h1>
+            <div className="udlite-text-md clp-lead__headline" data-purpose="lead-headline">Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!</div>
+          </div>
+        </div>
+      </div>
+
+
       <div className="container">
         {course != null ? (
           <div className="row">
@@ -120,6 +131,14 @@ const CourseDetail = () => {
               </div>
             </div>
             <div className="col-lg-4 right-contents">
+              <span className="intro-asset--img-aspect--1UbeZ">
+                <img class="img-fluid" src={require(`./img/course-${course.id}.jpg`)}
+                  alt="" width={350} height={200} style={{ backgroundSize: 'cover', backgroundImage: 'url("data:image/png' }}
+                />
+
+
+              </span>
+
               <ul>
                 <li>
                   <a className="justify-content-between d-flex" href="#">

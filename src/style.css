@@ -15497,3 +15497,12 @@ u,
 del {
   color: #080808;
 }
+
+/* courseDetails */
+.top-container.dark-background {
+  text-align: center;
+  margin-bottom: 59px;
+  background: #78a7fda3;
+}
+
+/* end courseDetails */
