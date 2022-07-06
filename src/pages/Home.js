@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-
+import moment from 'moment';
 const Home = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -25,11 +25,11 @@ const Home = () => {
     console.log('>>> check dataUse : ', data);
 
   }, []);
-const [itemsToShow,setItemToShow] = useState(6);
-const showMore = () =>{
-  setItemToShow(itemsToShow + 6);
+  const [itemsToShow, setItemToShow] = useState(6);
+  const showMore = () => {
+    setItemToShow(itemsToShow + 6);
 
-}
+  }
 
   return (
     <div className="container">
@@ -72,7 +72,7 @@ const showMore = () =>{
                             </small>
                             <small className="m-0">
                               <i className="far fa-clock text-primary mr-2" />
-                              {item.date.slice(0, 10)}
+                              {moment(item.date.slice(0, 10), 'DD-MM-YYYY').format('DD/MM/YYYY')}
                             </small>
                           </div>
                           <Link to={'/detail/' + item.id} className="h5">
@@ -101,7 +101,7 @@ const showMore = () =>{
               'Loading....'
             }
             <div className='text-center'>
-            <button type='button' className='btn' onClick={() => showMore()}>Xem thêm</button>
+              <button type='button' className='btn' onClick={() => showMore()}>Xem thêm</button>
             </div>
           </div>
         </div>
