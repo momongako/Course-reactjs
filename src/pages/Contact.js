@@ -50,9 +50,7 @@ const Contact = () => {
                 />
               </div>
               <h4>Phone</h4>
-              <a href="tel:034.960.1818" className="contact">
-                034.960.1818
-              </a>
+              024 3202 0339
             </div>
           </div>
           <div className="col-sm-6 col-lg-4">
@@ -64,9 +62,7 @@ const Contact = () => {
                 />
               </div>
               <h4>Email</h4>
-              <a href="mailto:thev98@gmail.com" className="contact">
-                thev98@gmail.com
-              </a>
+              changwon46.lee@multicampus.com
             </div>
           </div>
         </div>
