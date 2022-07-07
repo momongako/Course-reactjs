@@ -132,7 +132,7 @@ const CourseDetail = () => {
               <ul>
                 <li>
                   <a className="justify-content-between d-flex" href="#">
-                    <p>Trainer’s Name</p>
+                    <p>Trainer's Name</p>
                     <span className="or">{course.name}</span>
                   </a>
                 </li>
