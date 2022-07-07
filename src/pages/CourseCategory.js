@@ -49,7 +49,7 @@ const CourseCategory = () => {
                                                 <div className="border-top mt-4 pt-4">
                                                     <div className="d-flex justify-content-between">
                                                         <h6 className="m-0"><i className="fa fa-star text-primary mr-2" />4.5
-                                                            <small>{item.level}</small>
+                                                            <small>({item.level})</small>
                                                         </h6>
                                                         <h5 className="m-0">${item.price} </h5>
                                                     </div>

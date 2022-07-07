@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { useState } from 'react';
 const Header = () => {
+  const [title, setTitile] = useState('')
   return (
     <header className="container-fluid">
       <div className="row border-top px-xl-5 navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
@@ -16,13 +17,15 @@ const Header = () => {
               <input
                 type="search"
                 className="form-control rounded"
-                placeholder="Search"
+                placeholder="Tìm Kiếm Theo Category"
                 aria-label="Search"
                 aria-describedby="search-addon"
+                value={title}
+                onChange={(event) => setTitile(event.target.value)}
               />
-              <button type="button" className="btn btn-outline-primary">
+              <Link to={'/coursecategory/' + title}> <button type="button" className="btn btn-outline-primary">
                 search
-              </button>
+              </button></Link>
             </div>
           </a>
         </div>
@@ -38,6 +41,7 @@ const Header = () => {
               className="navbar-toggler"
               data-toggle="collapse"
               data-target="#navbarCollapse"
+
             >
               <span className="navbar-toggler-icon" />
             </button>
