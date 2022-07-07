@@ -124,7 +124,7 @@ const CourseDetail = () => {
             </div>
             <div className="col-lg-4 right-contents">
               <span className="intro-asset--img-aspect--1UbeZ">
-                <img className="img-fluid" src={require(`./img/course-${course.id}.jpg`)}
+                <img className="img-fluid" src={require(`./img/course-${++course.id >= 6 ? course.id = 1 : course.id}.jpg`)}
                   alt="" width={350} height={200} style={{ backgroundSize: 'cover', backgroundImage: 'url("data:image/png' }}
                 />
 
