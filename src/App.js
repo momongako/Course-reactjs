@@ -17,7 +17,6 @@ import CourseCategory from "./pages/CourseCategory";
 import { getCourses } from './store/Fetch'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NotPage from "./pages/NotPage";
 export default function App() {
   const dispatch = useDispatch();
   const [courseData, setCourseData] = useState(null)
@@ -36,36 +35,35 @@ export default function App() {
 
 
 
-  const requestData = () => {
-    dispatch(fetchCourseActions.fetchDataPending);
-    fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
-      .then((response) => response.json())
-      .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
-      .then(setCourseData(data))
-      .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
-  };
+  // const requestData = () => {
+  //   dispatch(fetchCourseActions.fetchDataPending);
+  //   fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
+  //     .then((response) => response.json())
+  //     .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
+  //     .then(setCourseData(data))
+  // };
 
-  useEffect(() => {
-    requestData()
-  }, []);
+  // useEffect(() => {
+  //   requestData()
+  // }, []);
 
-  useEffect(() => {
-    setCourseData(data)
-    if (courseData !== null) { requestCategories() }
-  }, [data]);
+  // useEffect(() => {
+  //   setCourseData(data)
+  //   if (courseData !== null) { requestCategories() }
+  // }, []);
 
 
-  const categories = [];
-  const test = [];
-  const requestCategories = () => {
-    courseData.forEach((item) => {
-      if (test.indexOf(item.category) === -1) {
-        test.push(item.category);
-        categories.push({ name: item.category, picture: item.catPic });
-      }
-    });
-    dispatch(fetchCategoryActions.updateCategories());
-  }
+  // const categories = [];
+  // const test = [];
+  // const requestCategories = () => {
+  //   courseData.forEach((item) => {
+  //     if (test.indexOf(item.category) === -1) {
+  //       test.push(item.category);
+  //       categories.push({ name: item.category, picture: item.catPic });
+  //     }
+  //   });
+  //   dispatch(fetchCategoryActions.updateCategories());
+  // }
 
 
   return (
@@ -82,8 +80,6 @@ export default function App() {
           <Route path="courseCategory/:name" element={<CourseCategory />} />
           <Route path="admin" element={<Admin />} />
           <Route path='detail/:id' element={<CourseDetail />} />
-          <Route path='*' element={<NotPage />} />
-
         </Route>
       </Routes>
       <ToastContainer
