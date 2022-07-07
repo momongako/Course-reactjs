@@ -17,22 +17,10 @@ import CourseCategory from "./pages/CourseCategory";
 import { getCourses } from './store/Fetch'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NotPage from "./pages/NotPage";
 export default function App() {
   const dispatch = useDispatch();
   const [courseData, setCourseData] = useState(null)
   const data = useSelector((state) => state.courses.courseData)
-
-  // const requestData = () => {
-  //   async () => {
-  //     dispatch(fetchCourseActions.fetchDataPending);
-  //     fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
-  //       .then((response) => response.json())
-  //       .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
-  //       .then(setCourseData(data))
-  //       .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
-  //   }
-  // };
 
 
 
@@ -42,7 +30,6 @@ export default function App() {
       .then((response) => response.json())
       .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
       .then(setCourseData(data))
-      .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
   };
 
   useEffect(() => {
@@ -52,7 +39,7 @@ export default function App() {
   useEffect(() => {
     setCourseData(data)
     if (courseData !== null) { requestCategories() }
-  }, [data]);
+  }, []);
 
 
   const categories = [];
@@ -82,8 +69,6 @@ export default function App() {
           <Route path="courseCategory/:name" element={<CourseCategory />} />
           <Route path="admin" element={<Admin />} />
           <Route path='detail/:id' element={<CourseDetail />} />
-          <Route path='*' element={<NotPage />} />
-
         </Route>
       </Routes>
       <ToastContainer

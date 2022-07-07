@@ -7,9 +7,12 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import AdminModal from "../components/AdminModal";
 import { useSelector, useDispatch } from "react-redux";
+import {courseInfoActions} from "../store/ItemInfoSlice"
+import { fetchCourseData, fetchCourseActions, fetchCategoryActions } from "../store/Fetch";
 
 
 const Admin = () => {
+  const dispatch = useDispatch();
   const data = useSelector((state) => state.courses.courseData);
   const isPending = useSelector((state) => state.courses.isPending);
   const [products, setProducts] = useState(null);
@@ -20,15 +23,31 @@ const Admin = () => {
   const [showNew, setNewShow] = useState(false);
   const [direction, setDirection] = useState(1)
   const [entries, setEntries] = useState(5)
+  
+  
+  const requestData = () => {
+    dispatch(fetchCourseActions.fetchDataPending);
+    fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
+      .then((response) => response.json())
+      .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
+  };
+
   useEffect(() => {
-    setProducts(data);
+    requestData()
+  }, []);
+
+  console.log('Data',data)
+  
+  useEffect(() => {
+    setProducts(data)
     if (products != null) {
       setPage(0);
     }
   }, [data]);
 
-  const handleClose = () => setShow(false);
-  const handleEditShow = () => setEditShow(true);
+  const handleEditClose = () => setEditShow(false);
+  const handleNewClose = () => setNewShow(false);
+  const handleEditShow = () => {setEditShow(true)}
   const handleNewShow = () => setNewShow(true);
   const handleCancle=()=>{setShow(false);}
 
@@ -45,35 +64,46 @@ const Admin = () => {
       setPageCount(Math.ceil(data.length / itemsPerPage));
     }
   }
+
+  console.log('Products',products)
+
+  const editHandler=(item)=>{
+    dispatch(courseInfoActions.getCourseInfo(item))
+    handleEditShow()
+  }
+
   useEffect(() => {
     pageHandler(products)
-  }, [page]||[entries]);
+  }, products||[page]||[entries]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
   };
 
-  var products_list = [];
-  if (products !== null && currentItems !== null) {
-    products_list = currentItems.map((item, key) => (
-      <tr key={key}>
-        <td className='adminTableSTT'>{item.id}</td>
-        <td className='adminTableCName'>{item.name}</td>
-        <td className='adminTableCat'>{item.category}</td>
-        <td className='adminTableLevel'>{item.level>75?'Expert':item.level>50?'Advanced':item.level>25?'Intermediate':'Beginner'}</td>
-        <td className='adminTablePic'><img src={item.picture} alt='' width='50px' height='50px'/></td>
-        <td className='adminTablePrice'>${item.price}</td>
-        <td className='adminTableEdit'>
-          <button onClick={handleEditShow} className="btn btn-primary mx-1 adminEditButton" data-toggle="modal">
-          <i className="fa-solid fa-pen-to-square"></i>
-          </button>
-          <button className="btn btn-danger mx-1 adminDelete,Button" data-toggle="modal">
-          <i className="fa-solid fa-trash"></i>
-          </button>
-        </td>
-      </tr>
-    ));
-  }
+const [products_list,setProductList]=useState([]);
+useEffect(() => {  if (products !== null&&currentItems!== null) {
+  var list = currentItems.map((item, key) => (
+    <tr key={key}>
+      <td className='adminTableSTT'>{item.id}</td>
+      <td className='adminTableCName'>{item.name}</td>
+      <td className='adminTableCat'>{item.category}</td>
+      <td className='adminTableLevel'>{item.level>75?'Expert':item.level>50?'Advanced':item.level>25?'Intermediate':'Beginner'}</td>
+      <td className='adminTablePic'><img src={item.picture} alt='' width='50px' height='50px'/></td>
+      <td className='adminTablePrice'>${item.price}</td>
+      <td className='adminTableEdit'>
+        <button onClick={()=>{editHandler(item)}} className="btn btn-primary mx-1 adminEditButton" data-toggle="modal">
+        <i className="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button className="btn btn-danger mx-1 adminDelete,Button" data-toggle="modal">
+        <i className="fa-solid fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  ));
+  setProductList(list);
+}},[data])
+
+console.log('Product_list:',products_list)
   
   const SortColumn = (event,field, type) => {
     const sortData = [...products];
@@ -98,7 +128,7 @@ const Admin = () => {
   return currentItems !== null ? (
     <div>
       <>
-        <Modal show={showEdit} onHide={handleClose}>
+        <Modal size="lg" show={showEdit} onHide={handleEditClose} >
           <Modal.Header closeButton>
             <Modal.Title>Edit Course</Modal.Title>
           </Modal.Header>
@@ -108,7 +138,7 @@ const Admin = () => {
         </Modal>
       </>
       <>
-        <Modal show={showNew} onHide={handleClose}>
+        <Modal show={showNew} onHide={handleNewClose}>
           <Modal.Header closeButton>
             <Modal.Title>Create New Course</Modal.Title>
           </Modal.Header>
@@ -211,7 +241,7 @@ const Admin = () => {
                   breakClassName="page-item"
                   breakLinkClassName="page-link"
                   pageCount={pageCount}
-                  marginPagesDisplayed={2}
+                  marginPagesDisplayed={1}
                   pageRangeDisplayed={5}
                   onPageChange={handlePageClick}
                   containerClassName="pagination"
