@@ -26,7 +26,7 @@ const Cart = () => {
                     <div className="product">
                       {items.map((item, index) => {
                         return (
-                          <div className="row">
+                          <div key={item.id} className="row">
                             <div className="col-md-3">
                               <img
                                 className="img-fluid mx-auto d-block image"
