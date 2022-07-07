@@ -6,6 +6,7 @@ import { CartProvider, useCart } from 'react-use-cart';
 const Cart = () => {
   const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
     useCart();
+  console.log('>>>check items : ', items)
   return (
     <div>
       <main className="page">
@@ -54,9 +55,19 @@ const Cart = () => {
                                   <div className="col-md-4 quantity">
 
 
-
+                                    quantity : {item.quantity}
 
                                   </div>
+                                  <button
+                                    onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+                                  >
+                                    -
+                                  </button>
+                                  <button
+                                    onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+                                  >
+                                    +
+                                  </button>
                                   <div className="col-md-3 price">
                                     <span>${item.price}</span>
                                   </div>

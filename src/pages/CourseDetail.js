@@ -14,12 +14,11 @@ const CourseDetail = () => {
   const [data, setData] = useState([])
 
   const { addItem } = useCart();
-
+  const { updateItem } = useCart();
   let navigate = useNavigate();
 
 
   useEffect(() => {
-    console.log('user use effect!!');
     let country_url =
       'https://62c253232af60be89ed60e41.mockapi.io/Courses/' + params.id;
 
@@ -33,7 +32,6 @@ const CourseDetail = () => {
       });
   }, []);
   useEffect(() => {
-    console.log('user use effect!!');
     let country_url =
       'https://62c253232af60be89ed60e41.mockapi.io/Courses/' + params.id;
 
@@ -76,7 +74,7 @@ const CourseDetail = () => {
 
   ))
 
-  console.log('check course : ', data[0]) // = section1Name
+  console.log('check course : ', course) // = section1Name
 
 
 
@@ -99,7 +97,7 @@ const CourseDetail = () => {
           <div className="row">
             <div className="col-lg-8 course-details-left">
               <div className="main-image">
-                <img className="img-fluid" src="img/courses/course-details.jpg" alt="" data-pagespeed-url-hash={3785246945} onLoad="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                {/* <img className="img-fluid" src="img/courses/course-details.jpg" alt="" data-pagespeed-url-hash={3785246945} onLoad="pagespeed.CriticalImages.checkImageForCriticality(this);" /> */}
               </div>
               <div className="content-wrapper">
                 <h4 className="title">Objectives</h4>
@@ -127,7 +125,7 @@ const CourseDetail = () => {
             </div>
             <div className="col-lg-4 right-contents">
               <span className="intro-asset--img-aspect--1UbeZ">
-                <img className="img-fluid" src={require(`./img/course-${++course.id >= 6 ? course.id = 1 : course.id}.jpg`)}
+                <img className="img-fluid" src={require(`./img/course-1.jpg`)}
                   alt="" width={350} height={200} style={{ backgroundSize: 'cover', backgroundImage: 'url("data:image/png' }}
                 />
 
@@ -160,7 +158,9 @@ const CourseDetail = () => {
                   </a>
                 </li>
               </ul>
+
               <button onClick={() => addItem(course)} className="btn text-uppercase enroll">Buy Course</button>
+
               <h4 className="title">Reviews</h4>
               <div className="content">
                 <div className="review-top row pt-40">
