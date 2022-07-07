@@ -17,6 +17,7 @@ import CourseCategory from "./pages/CourseCategory";
 import { getCourses } from './store/Fetch'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NotPage from "./pages/NotPage";
 export default function App() {
   const dispatch = useDispatch();
   const [courseData, setCourseData] = useState(null)
@@ -81,6 +82,8 @@ export default function App() {
           <Route path="courseCategory/:name" element={<CourseCategory />} />
           <Route path="admin" element={<Admin />} />
           <Route path='detail/:id' element={<CourseDetail />} />
+          <Route path='*' element={<NotPage />} />
+
         </Route>
       </Routes>
       <ToastContainer
