@@ -3,8 +3,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./Admin.css";
 import ReactPaginate from "react-paginate";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import AdminModal from "../components/AdminModal";
 import { useSelector, useDispatch } from "react-redux";
 import {courseInfoActions} from "../store/ItemInfoSlice"
@@ -26,7 +24,7 @@ const Admin = () => {
 
   const handleEditClose = () => setEditShow(false);
   const handleNewClose = () => setNewShow(false);
-  const handleEditShow = () => {setEditShow(true)}
+  const handleEditShow = () => setEditShow(true)
   const handleNewShow = () => setNewShow(true);
   const handleCancle=()=>{setEditShow(false);setNewShow(false);}
   
@@ -42,7 +40,6 @@ const Admin = () => {
     requestData()
   }, []);
 
-  console.log('Data',data)
   
   useEffect(() => {
     setProducts(data)
@@ -73,8 +70,11 @@ const Admin = () => {
   }
 
   useEffect(() => {
+    if (page*entries>products.length){
+      setPage(0)
+    }
     pageHandler(products)
-  }, products||[page]||[entries]);
+  },[page||entries]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
@@ -125,26 +125,6 @@ useEffect(() => {  if (currentItems!== null) {
 
   return currentItems !== null ? (
     <div>
-      <>
-        <Modal size="lg" show={showEdit} onHide={handleEditClose} >
-          <Modal.Header closeButton>
-            <Modal.Title>Edit Course</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <AdminModal />
-          </Modal.Body>
-        </Modal>
-      </>
-      <>
-        <Modal show={showNew} onHide={handleNewClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Create New Course</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <AdminModal />
-          </Modal.Body>
-        </Modal>
-      </>
       <div className="container p-0">
         <div className="container">
           <div className="table-responsive">
@@ -153,7 +133,7 @@ useEffect(() => {  if (currentItems!== null) {
                 <div className="row">
                   <div className="col-6">
                     <h2 className="text-white fs-3">
-                      Manage <b className="text-success fs-2 fw-bolder fw-italic">Employees</b>
+                      Manage <b className="text-special fs-2 fw-bolder fw-italic">Courses</b>
                     </h2>
                   </div>
                   <div className="col-6 my-auto">

@@ -315,3 +315,6 @@ a.w3-bar-item.w3-button.w3-padding.w3-text-teal {
     content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0uNDc0LjVjLS40MjMgMC0uNjM1LjQzOC0uMzMuNzA4TDMuMTYgMy44NzVhLjUyOS41MjkgMCAwMC42ODIgMGwzLjAxNC0yLjY2N0M3LjE2MS45MzggNi45NS41IDYuNTI1LjVILjQ3NnoiIGZpbGw9IiNCNkMyRDIiLz48L3N2Zz4=") !important;
     margin-top: -1px !important;
 }
+.text-special {
+  color:cyan;
+}
