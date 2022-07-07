@@ -6,10 +6,14 @@ const Header = () => {
   const listener = () => {
     setTitile('')
   };
+
   return (
     <header className="container-fluid">
       <div className="row border-top px-xl-5 navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
         <div className="col-lg-3 d-none d-lg-block">
+          <a href="#" className="btn btn-lg btn-primary btn-lg-square back-to-top" style={{ display: 'inline' }}>
+            <i className="fa fa-angle-double-up"></i>
+          </a>
           <a
             className="d-flex align-items-center justify-content-between w-100 text-decoration-none"
             data-toggle="collapse"
@@ -59,6 +63,7 @@ const Header = () => {
                 <Link to="category" className="nav-item nav-link">
                   Danh mục
                 </Link>
+
                 {/* <Link to="detail" className="nav-item nav-link">
                   Test Chi tiết
                 </Link> */}
