@@ -8,12 +8,29 @@ const Category = (prop) => {
 
   const [data, setData] = useState([]);
 
+  // useEffect(() => {
+  //   setData(prop.data);
+
+
+  // }, [prop.data])
   useEffect(() => {
-    setData(prop.data);
+    console.log('app useeffect!!');
+    let url = 'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse';
+    // if (search.length > 0) {
+    //     url = url + '?search=' + search;
+    // }
+
+    console.log(url);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
 
 
-  }, [prop.data])
+        setData(data); //setStudents(data)
+      });
+    console.log('>>> check dataUse : ', data);
 
+  }, []);
   return (
     <div className="container-fluid py-5">
 
