@@ -18,7 +18,7 @@ const Header = () => {
           <a href="#" className="btn btn-lg btn-primary btn-lg-square back-to-top" style={{ display: 'inline' }}>
             <i className="fa fa-angle-double-up"></i>
           </a>
-          <a
+          <div
             className="d-flex align-items-center justify-content-between w-100 text-decoration-none"
             data-toggle="collapse"
             href="#navbar-vertical"
@@ -38,7 +38,7 @@ const Header = () => {
                 search
               </button></Link>
             </div>
-          </a>
+          </div>
         </div>
         <div className="col-lg-9">
           <nav className="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">

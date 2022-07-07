@@ -23,6 +23,12 @@ const Admin = () => {
   const [showNew, setNewShow] = useState(false);
   const [direction, setDirection] = useState(1)
   const [entries, setEntries] = useState(5)
+
+  const handleEditClose = () => setEditShow(false);
+  const handleNewClose = () => setNewShow(false);
+  const handleEditShow = () => {setEditShow(true)}
+  const handleNewShow = () => setNewShow(true);
+  const handleCancle=()=>{setEditShow(false);setNewShow(false);}
   
   
   const requestData = () => {
@@ -45,11 +51,7 @@ const Admin = () => {
     }
   }, [data]);
 
-  const handleEditClose = () => setEditShow(false);
-  const handleNewClose = () => setNewShow(false);
-  const handleEditShow = () => {setEditShow(true)}
-  const handleNewShow = () => setNewShow(true);
-  const handleCancle=()=>{setShow(false);}
+
 
 
   const pageHandler =(data)=>{
@@ -65,8 +67,6 @@ const Admin = () => {
     }
   }
 
-  console.log('Products',products)
-
   const editHandler=(item)=>{
     dispatch(courseInfoActions.getCourseInfo(item))
     handleEditShow()
@@ -81,7 +81,7 @@ const Admin = () => {
   };
 
 const [products_list,setProductList]=useState([]);
-useEffect(() => {  if (products !== null&&currentItems!== null) {
+useEffect(() => {  if (currentItems!== null) {
   var list = currentItems.map((item, key) => (
     <tr key={key}>
       <td className='adminTableSTT'>{item.id}</td>
@@ -101,9 +101,7 @@ useEffect(() => {  if (products !== null&&currentItems!== null) {
     </tr>
   ));
   setProductList(list);
-}},[data])
-
-console.log('Product_list:',products_list)
+}},[currentItems])
   
   const SortColumn = (event,field, type) => {
     const sortData = [...products];
