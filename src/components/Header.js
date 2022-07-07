@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { CartProvider, useCart } from 'react-use-cart';
+
 const Header = () => {
   const [title, setTitile] = useState('')
   const listener = () => {
     setTitile('')
   };
+  const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
+    useCart();
   return (
     <header className="container-fluid">
       <div className="row border-top px-xl-5 navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
@@ -73,7 +77,7 @@ const Header = () => {
                 </Link>
               </div>
               <Link to="cart" className="btn btn-outline-info">
-                <i className="fas fa-shopping-cart" /><sup>0</sup>
+                <i className="fas fa-shopping-cart" /><sup>{(isEmpty) ? 0 : totalUniqueItems}</sup>
               </Link>
             </div>
           </nav>

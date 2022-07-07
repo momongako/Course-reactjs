@@ -6,11 +6,14 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Loading from './Loading';
+import { CartProvider, useCart } from 'react-use-cart';
+
 const CourseDetail = () => {
   const params = useParams('');
   const [course, setCourse] = useState(null);
   const [data, setData] = useState([])
 
+  const { addItem } = useCart();
 
   let navigate = useNavigate();
 
@@ -157,7 +160,7 @@ const CourseDetail = () => {
                   </a>
                 </li>
               </ul>
-              <a href="#" className="btn text-uppercase enroll">Buy Course</a>
+              <button onClick={() => addItem(course)} className="btn text-uppercase enroll">Buy Course</button>
               <h4 className="title">Reviews</h4>
               <div className="content">
                 <div className="review-top row pt-40">
