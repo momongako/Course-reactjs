@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import AdminModal from "../components/AdminModal";
 import { useSelector, useDispatch } from "react-redux";
-// import {getItem} from "../store/ItemInfoSlice"
+import {courseInfoActions} from "../store/ItemInfoSlice"
 
 
 const Admin = () => {
@@ -57,7 +57,7 @@ const Admin = () => {
   console.log(products)
 
   const editHandler=(item)=>{
-    dispatch(getItem.getItemInfo(item))
+    dispatch(courseInfoActions.getCourseInfo(item))
     handleEditShow()
   }
 
