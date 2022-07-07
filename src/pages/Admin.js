@@ -315,10 +315,10 @@ const Admin = () => {
       </div>
     </div>
   ) : (
-    <div class="text-center">
-      <button class="btn btn-primary" type="button" disabled>
+    <div className="text-center">
+      <button className="btn btn-primary" type="button" disabled>
         <span
-          class="spinner-grow spinner-grow-sm"
+          className="spinner-grow spinner-grow-sm"
           role="status"
           aria-hidden="true"
         ></span>

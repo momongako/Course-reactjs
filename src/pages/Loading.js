@@ -1,6 +1,6 @@
 const Loading = () => {
     return (
-        <div class="lds-facebook align-content-center">
+        <div className="lds-facebook align-content-center">
             <div></div>
             <div></div>
             <div></div>
