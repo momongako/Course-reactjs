@@ -51,20 +51,17 @@ const Admin = () => {
       <tr key={key}>
         <td>{item.id}</td>
         <td>{item.name}</td>
-        <td>{item.email}</td>
-        <td>{item.address}</td>
-        <td>{item.phone}</td>
+        <td>{item.category}</td>
+        <td>{item.level>75?'Expert':item.level>50?'Advanced':item.level>25?'Intermediate':'Beginner'}</td>
+        <td><img src={item.picture} alt='' width='50px' height='50px'/></td>
+        <td>${item.price}</td>
         <td>
-          <a onClick={handleShow} className="edit" data-toggle="modal">
-            <i className="material-icons" data-toggle="tooltip" title="Edit">
-              
-            </i>
-          </a>
-          <a className="delete" data-toggle="modal">
-            <i className="material-icons" data-toggle="tooltip" title="Delete">
-              
-            </i>
-          </a>
+          <button onClick={handleShow} className="btn btn-primary mx-1 adminEditButton" data-toggle="modal">
+          <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button className="btn btn-danger mx-1 adminDelete,Button" data-toggle="modal">
+          <i class="fa-solid fa-trash"></i>
+          </button>
         </td>
       </tr>
     ));
@@ -241,39 +238,26 @@ const Admin = () => {
                     <table id="datatablesSimple" className="dataTable-table">
                       <thead>
                         <tr>
-                          <th data-sortable style={{ width: "19.6115%" }}>
-                            <a href="#" className="dataTable-sorter">
+                          <th>
                               No.
-                            </a>
                           </th>
-                          <th
-                            data-sortable
-                            style={{ width: "28.9474%" }}
-                            className="desc"
-                          >
-                            <a href="#" className="dataTable-sorter">
+                          <th>
                               Course Name
-                            </a>
                           </th>
-                          <th data-sortable style={{ width: "15.6015%" }}>
-                            <a href="#" className="dataTable-sorter">
+                          <th>
                               Category
-                            </a>
                           </th>
-                          <th data-sortable style={{ width: "9.14787%" }}>
-                            <a href="#" className="dataTable-sorter">
-                              Age
-                            </a>
+                          <th>
+                              Level
                           </th>
-                          <th data-sortable style={{ width: "15.2256%" }}>
-                            <a href="#" className="dataTable-sorter">
-                              Start date
-                            </a>
+                          <th>
+                              Picture
                           </th>
-                          <th data-sortable style={{ width: "11.4662%" }}>
-                            <a href="#" className="dataTable-sorter">
+                          <th>
+                              Price
+                          </th>
+                          <th>
                               Salary
-                            </a>
                           </th>
                         </tr>
                       </thead>
@@ -315,10 +299,10 @@ const Admin = () => {
       </div>
     </div>
   ) : (
-    <div className="text-center">
-      <button className="btn btn-primary" type="button" disabled>
+    <div class="text-center">
+      <button class="btn btn-primary" type="button" disabled>
         <span
-          className="spinner-grow spinner-grow-sm"
+          class="spinner-grow spinner-grow-sm"
           role="status"
           aria-hidden="true"
         ></span>
