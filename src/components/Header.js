@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 const Header = () => {
   const [title, setTitile] = useState('')
+  const listener = () => {
+    setTitile('')
+  };
   return (
     <header className="container-fluid">
       <div className="row border-top px-xl-5 navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
@@ -23,7 +26,7 @@ const Header = () => {
                 value={title}
                 onChange={(event) => setTitile(event.target.value)}
               />
-              <Link to={'/coursecategory/' + title}> <button type="button" className="btn btn-outline-primary">
+              <Link to={'/coursecategory/' + title}> <button onClick={listener} type="button" className="btn btn-outline-primary">
                 search
               </button></Link>
             </div>
