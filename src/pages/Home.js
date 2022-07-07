@@ -10,7 +10,7 @@ const Home = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     console.log('app useeffect!!');
-    let url = 'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse';
+    let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses';
     // if (search.length > 0) {
     //     url = url + '?search=' + search;
     // }
@@ -64,7 +64,7 @@ const Home = () => {
                   <div key={index + 1} className="col-lg-4 col-md-6 mb-4">
                     <Link to={'/detail/' + item.id} className="h5">
                       <div className="rounded overflow-hidden mb-2">
-                        <img className="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} />
+                        {/* <img className="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} /> */}
                         <div className="bg-secondary p-4">
                           <div className="d-flex justify-content-between mb-3">
                             <small className="m-0">
