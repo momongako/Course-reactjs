@@ -212,20 +212,6 @@ const Admin = () => {
                   </div>
                 </div>
               </div>
-              {/* <table className="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>{products_list}</tbody>
-              </table> */}
-              {/* ---------------------------------------------------------------------------------------------------- */}
               <div className="card-body">
                 <div className="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                   <div className="dataTable-top">
@@ -257,7 +243,7 @@ const Admin = () => {
                         <tr>
                           <th data-sortable style={{ width: "19.6115%" }}>
                             <a href="#" className="dataTable-sorter">
-                              Name
+                              No.
                             </a>
                           </th>
                           <th
@@ -266,12 +252,12 @@ const Admin = () => {
                             className="desc"
                           >
                             <a href="#" className="dataTable-sorter">
-                              Position
+                              Course Name
                             </a>
                           </th>
                           <th data-sortable style={{ width: "15.6015%" }}>
                             <a href="#" className="dataTable-sorter">
-                              Office
+                              Category
                             </a>
                           </th>
                           <th data-sortable style={{ width: "9.14787%" }}>
@@ -292,141 +278,14 @@ const Admin = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Prescott Bartlett</td>
-                          <td>Technical Author</td>
-                          <td>London</td>
-                          <td>27</td>
-                          <td>2011/05/07</td>
-                          <td>$145,000</td>
-                        </tr>
-                        <tr>
-                          <td>Gavin Cortez</td>
-                          <td>Team Leader</td>
-                          <td>San Francisco</td>
-                          <td>22</td>
-                          <td>2008/10/26</td>
-                          <td>$235,500</td>
-                        </tr>
-                        <tr>
-                          <td>Gloria Little</td>
-                          <td>Systems Administrator</td>
-                          <td>New York</td>
-                          <td>59</td>
-                          <td>2009/04/10</td>
-                          <td>$237,500</td>
-                        </tr>
-                        <tr>
-                          <td>Lael Greer</td>
-                          <td>Systems Administrator</td>
-                          <td>London</td>
-                          <td>21</td>
-                          <td>2009/02/27</td>
-                          <td>$103,500</td>
-                        </tr>
-                        <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
-                        </tr>
-                        <tr>
-                          <td>Quinn Flynn</td>
-                          <td>Support Lead</td>
-                          <td>Edinburgh</td>
-                          <td>22</td>
-                          <td>2013/03/03</td>
-                          <td>$342,000</td>
-                        </tr>
-                        <tr>
-                          <td>Olivia Liang</td>
-                          <td>Support Engineer</td>
-                          <td>Singapore</td>
-                          <td>64</td>
-                          <td>2011/02/03</td>
-                          <td>$234,500</td>
-                        </tr>
-                        <tr>
-                          <td>Sakura Yamamoto</td>
-                          <td>Support Engineer</td>
-                          <td>Tokyo</td>
-                          <td>37</td>
-                          <td>2009/08/19</td>
-                          <td>$139,575</td>
-                        </tr>
-                        <tr>
-                          <td>Finn Camacho</td>
-                          <td>Support Engineer</td>
-                          <td>San Francisco</td>
-                          <td>47</td>
-                          <td>2009/07/07</td>
-                          <td>$87,500</td>
-                        </tr>
-                        <tr>
-                          <td>Sonya Frost</td>
-                          <td>Software Engineer</td>
-                          <td>Edinburgh</td>
-                          <td>23</td>
-                          <td>2008/12/13</td>
-                          <td>$103,600</td>
-                        </tr>
+                      {products_list}
                       </tbody>
                     </table>
                   </div>
-                  <div className="dataTable-bottom">
-                    <div className="dataTable-info">
-                      Showing 1 to 10 of 57 entries
-                    </div>
-                    <nav className="dataTable-pagination">
-                      <ul className="dataTable-pagination-list">
-                        <li className="active">
-                          <a href="#" data-page={1}>
-                            1
-                          </a>
-                        </li>
-                        <li className>
-                          <a href="#" data-page={2}>
-                            2
-                          </a>
-                        </li>
-                        <li className>
-                          <a href="#" data-page={3}>
-                            3
-                          </a>
-                        </li>
-                        <li className>
-                          <a href="#" data-page={4}>
-                            4
-                          </a>
-                        </li>
-                        <li className>
-                          <a href="#" data-page={5}>
-                            5
-                          </a>
-                        </li>
-                        <li className>
-                          <a href="#" data-page={6}>
-                            6
-                          </a>
-                        </li>
-                        <li className="pager">
-                          <a href="#" data-page={2}>
-                            ›
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-              {/* END OF COPY */}
-              <div className="clearfix">
+                  <div className="clearfix">
                 <div className="hint-text">
                   Showing <b>5</b> out of <b>{products.length}</b> entries
                 </div>
-
                 <ReactPaginate
                   previousLabel="Previous"
                   nextLabel="Next"
@@ -447,6 +306,8 @@ const Admin = () => {
                   activeClassName="active"
                   forcePage={page}
                 />
+              </div>
+                </div>
               </div>
             </div>
           </div>
