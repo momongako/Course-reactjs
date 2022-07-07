@@ -1,4 +1,15 @@
+import React from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import {courseInfoActions} from "../store/ItemInfoSlice"
+
+
+
 const AdminModal = () => {
+
+    const dispatch = useDispatch();
+    const courseInfo = useSelector((state) => state.courseInfo.courseInfo)
+    console.log(courseInfo)
+
     return (
         <>
             <div className="modal-body">
