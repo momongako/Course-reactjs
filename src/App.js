@@ -14,12 +14,26 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCourseData, fetchCourseActions, fetchCategoryActions } from "./store/Fetch";
 import CourseCategory from "./pages/CourseCategory";
+import { getCourses } from './store/Fetch'
 
 export default function App() {
   const dispatch = useDispatch();
   const [courseData, setCourseData] = useState(null)
   const data = useSelector((state) => state.courses.courseData)
-
+  
+  // const requestData = () => {
+  //   async () => {
+  //     dispatch(fetchCourseActions.fetchDataPending);
+  //     fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
+  //       .then((response) => response.json())
+  //       .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
+  //       .then(setCourseData(data))
+  //       .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
+  //   }
+  // };
+  
+  
+  
   const requestData = () => {
     dispatch(fetchCourseActions.fetchDataPending);
     fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
