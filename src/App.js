@@ -63,7 +63,7 @@ export default function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="category" element={<Category />} />
-          <Route path="courseCategory" element={<CourseCategory />} />
+          <Route path="courseCategory/:name" element={<CourseCategory />} />
           <Route path="admin" element={<Admin />} />
           <Route path='detail/:id' element={<CourseDetail />} />
         </Route>

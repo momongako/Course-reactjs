@@ -4,25 +4,16 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
 
-const Category = () => {
+const Category = (prop) => {
 
   const [data, setData] = useState([]);
+
   useEffect(() => {
-    console.log('app useeffect!!');
-    let url = 'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse';
-    // if (search.length > 0) {
-    //     url = url + '?search=' + search;
-    // }
+    setData(prop.data);
 
-    console.log(url);
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data); //setStudents(data)
-      });
-    console.log('>>> check dataUse : ', data);
 
-  }, []);
+  }, [prop.data])
+
   return (
     <div className="container-fluid py-5">
 
@@ -42,12 +33,12 @@ const Category = () => {
             data.map((item, index) => {
               return (
                 <div key={index + 1} className="col-lg-3 col-md-6 mb-4">
-                  <Link to='/coursecategory'>
+                  <Link to={'/coursecategory/' + item.category}>
                     <div className="cat-item position-relative overflow-hidden rounded mb-2">
                       <img className="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
                       <div className="cat-overlay text-white text-decoration-none">
-                        <h4 className="text-white font-weight-medium">Web Design</h4>
-                        <span>100 Courses</span>
+                        <h4 className="text-white font-weight-medium">{item.category}</h4>
+                        <span> Courses</span>
                       </div>
                     </div>
                   </Link>

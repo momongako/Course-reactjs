@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Loading from './Loading';
 const CourseDetail = () => {
   const params = useParams('');
   const [course, setCourse] = useState(null);
@@ -282,7 +283,7 @@ const CourseDetail = () => {
           </div>
         )
           :
-          'loading...'
+          <Loading />
         }
       </div>
     </section>

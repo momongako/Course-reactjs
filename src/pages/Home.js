@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <Category />
+      <Category data={data} />
       <div className="button-category col text-center">
         <button
           type="button"
