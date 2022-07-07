@@ -15,12 +15,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCourseData, fetchCourseActions, fetchCategoryActions } from "./store/Fetch";
 import CourseCategory from "./pages/CourseCategory";
 import { getCourses } from './store/Fetch'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
   const dispatch = useDispatch();
   const [courseData, setCourseData] = useState(null)
   const data = useSelector((state) => state.courses.courseData)
-  
+
   // const requestData = () => {
   //   async () => {
   //     dispatch(fetchCourseActions.fetchDataPending);
@@ -31,9 +32,9 @@ export default function App() {
   //       .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
   //   }
   // };
-  
-  
-  
+
+
+
   const requestData = () => {
     dispatch(fetchCourseActions.fetchDataPending);
     fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
@@ -82,6 +83,19 @@ export default function App() {
           <Route path='detail/:id' element={<CourseDetail />} />
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      {/* Same as */}
+      <ToastContainer />
     </BrowserRouter>
   );
 }

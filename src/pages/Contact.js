@@ -1,6 +1,25 @@
 import React from 'react';
-
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 const Contact = () => {
+  const [title, setTitle] = useState('')
+  const [title2, setTitle2] = useState('')
+  const [title3, setTitle3] = useState('')
+  const [title4, setTitle4] = useState('')
+  const handleSubmit = () => {
+    console.log('ok :', title)
+    if (title && title2 && title3 && title4) {
+      toast.success(`Gửi thông tin thành công `)
+      setTitle('')
+      setTitle2('')
+      setTitle3('')
+      setTitle4('')
+      return;
+    }
+    else (
+      toast.error(`Thông Tin không chính xác `)
+    )
+  }
   return (
     <div className="contact-sect">
       <div className="container-fluid">
@@ -72,18 +91,18 @@ const Contact = () => {
             <h4>Gửi phản hồi</h4>
             <form className="form-group" action="#" method="get">
               <label htmlFor="name">Họ và tên</label>
-              <input type="text" className="ipbox" id="name" name="name" />
+              <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} className="ipbox" id="name" name="name" />
               <label htmlFor="mail">Email</label>
-              <input type="mail" className="ipbox" id="mail" name="mail" />
+              <input type="mail" value={title2} onChange={(event) => setTitle2(event.target.value)} className="ipbox" id="mail" name="mail" />
               <label htmlFor="phone">Số điện thoại</label>
-              <input type="phone" className="ipbox" id="number" name="number" />
+              <input type="phone" value={title3} onChange={(event) => setTitle3(event.target.value)} className="ipbox" id="number" name="number" />
               <label htmlFor="sub">Tiêu đề</label>
               <input type="text" className="ipbox" id="sub" name="subject" />
               <label htmlFor="yourm">Nội dung</label>
-              <textarea rows={3} id="yourm" className="ipbox"  />
-              <div className="button">
+              <textarea rows={3} value={title4} onChange={(event) => setTitle4(event.target.value)} id="yourm" className="ipbox" />
+              <div className="button" onClick={handleSubmit}>
                 <input
-                  type="submit"
+                  type="button"
                   className="submit_btn"
                   name
                   defaultValue="Gửi"
