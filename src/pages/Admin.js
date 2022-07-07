@@ -229,7 +229,7 @@ console.log(products_list)
                   breakClassName="page-item"
                   breakLinkClassName="page-link"
                   pageCount={pageCount}
-                  marginPagesDisplayed={2}
+                  marginPagesDisplayed={1}
                   pageRangeDisplayed={5}
                   onPageChange={handlePageClick}
                   containerClassName="pagination"
