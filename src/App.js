@@ -22,48 +22,37 @@ export default function App() {
   const [courseData, setCourseData] = useState(null)
   const data = useSelector((state) => state.courses.courseData)
 
-  // const requestData = () => {
-  //   async () => {
-  //     dispatch(fetchCourseActions.fetchDataPending);
-  //     fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
-  //       .then((response) => response.json())
-  //       .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
-  //       .then(setCourseData(data))
-  //       .catch((error) => dispatch(fetchCourseActions.fetchDataFailed(error)));
-  //   }
-  // };
 
 
+  const requestData = () => {
+    dispatch(fetchCourseActions.fetchDataPending);
+    fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
+      .then((response) => response.json())
+      .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
+      .then(setCourseData(data))
+  };
 
-  // const requestData = () => {
-  //   dispatch(fetchCourseActions.fetchDataPending);
-  //   fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
-  //     .then((response) => response.json())
-  //     .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
-  //     .then(setCourseData(data))
-  // };
+  useEffect(() => {
+    requestData()
+  }, []);
 
-  // useEffect(() => {
-  //   requestData()
-  // }, []);
-
-  // useEffect(() => {
-  //   setCourseData(data)
-  //   if (courseData !== null) { requestCategories() }
-  // }, []);
+  useEffect(() => {
+    setCourseData(data)
+    if (courseData !== null) { requestCategories() }
+  }, []);
 
 
-  // const categories = [];
-  // const test = [];
-  // const requestCategories = () => {
-  //   courseData.forEach((item) => {
-  //     if (test.indexOf(item.category) === -1) {
-  //       test.push(item.category);
-  //       categories.push({ name: item.category, picture: item.catPic });
-  //     }
-  //   });
-  //   dispatch(fetchCategoryActions.updateCategories());
-  // }
+  const categories = [];
+  const test = [];
+  const requestCategories = () => {
+    courseData.forEach((item) => {
+      if (test.indexOf(item.category) === -1) {
+        test.push(item.category);
+        categories.push({ name: item.category, picture: item.catPic });
+      }
+    });
+    dispatch(fetchCategoryActions.updateCategories());
+  }
 
 
   return (

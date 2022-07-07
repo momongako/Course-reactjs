@@ -8,11 +8,12 @@ import Modal from "react-bootstrap/Modal";
 import AdminModal from "../components/AdminModal";
 import { useSelector, useDispatch } from "react-redux";
 import {courseInfoActions} from "../store/ItemInfoSlice"
+import { fetchCourseData, fetchCourseActions, fetchCategoryActions } from "../store/Fetch";
 
 
 const Admin = () => {
   const dispatch = useDispatch();
-  // const data = useSelector((state) => state.courses.courseData);
+  const data = useSelector((state) => state.courses.courseData);
   const isPending = useSelector((state) => state.courses.isPending);
   const [products, setProducts] = useState(null);
   const [currentItems, setCurrentItems] = useState(null);
@@ -24,15 +25,25 @@ const Admin = () => {
   const [entries, setEntries] = useState(5)
   
   
+  const requestData = () => {
+    dispatch(fetchCourseActions.fetchDataPending);
+    fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
+      .then((response) => response.json())
+      .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
+  };
+
   useEffect(() => {
-        fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
-          .then((response) => response.json())
-          .then((data) => setProducts(data));
+    requestData()
+  }, []);
+
+  console.log('Data',data)
+  
+  useEffect(() => {
+    setProducts(data)
     if (products != null) {
       setPage(0);
     }
-  }, []);
-  
+  }, [data]);
 
   const handleEditClose = () => setEditShow(false);
   const handleNewClose = () => setNewShow(false);
@@ -54,7 +65,7 @@ const Admin = () => {
     }
   }
 
-  console.log(products)
+  console.log('Products',products)
 
   const editHandler=(item)=>{
     dispatch(courseInfoActions.getCourseInfo(item))
@@ -69,9 +80,9 @@ const Admin = () => {
     setPage(event.selected);
   };
 
-  var products_list = [];
-useEffect(() => {  if (products !== null && currentItems !== null) {
-  products_list = currentItems.map((item, key) => (
+const [products_list,setProductList]=useState([]);
+useEffect(() => {  if (products !== null&&currentItems!== null) {
+  var list = currentItems.map((item, key) => (
     <tr key={key}>
       <td className='adminTableSTT'>{item.id}</td>
       <td className='adminTableCName'>{item.name}</td>
@@ -89,9 +100,10 @@ useEffect(() => {  if (products !== null && currentItems !== null) {
       </td>
     </tr>
   ));
-}},[products_list])
+  setProductList(list);
+}},[data])
 
-console.log(products_list)
+console.log('Product_list:',products_list)
   
   const SortColumn = (event,field, type) => {
     const sortData = [...products];
