@@ -59,9 +59,9 @@ const Header = () => {
                 <Link to="category" className="nav-item nav-link">
                   Danh mục
                 </Link>
-                <Link to="detail" className="nav-item nav-link">
+                {/* <Link to="detail" className="nav-item nav-link">
                   Test Chi tiết
-                </Link>
+                </Link> */}
                 <Link to="about" className="nav-item nav-link">
                   About
                 </Link>
