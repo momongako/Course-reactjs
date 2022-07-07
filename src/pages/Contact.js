@@ -6,14 +6,16 @@ const Contact = () => {
   const [title2, setTitle2] = useState('')
   const [title3, setTitle3] = useState('')
   const [title4, setTitle4] = useState('')
+  const [title5, setTitle5] = useState('')
   const handleSubmit = () => {
     console.log('ok :', title)
-    if (title && title2 && title3 && title4) {
+    if (title && title2 && title3 && title4 && title5) {
       toast.success(`Gửi thông tin thành công `)
       setTitle('')
       setTitle2('')
       setTitle3('')
       setTitle4('')
+      setTitle5('')
       return;
     }
     else (
@@ -97,9 +99,9 @@ const Contact = () => {
               <label htmlFor="phone">Số điện thoại</label>
               <input type="phone" value={title3} onChange={(event) => setTitle3(event.target.value)} className="ipbox" id="number" name="number" />
               <label htmlFor="sub">Tiêu đề</label>
-              <input type="text" className="ipbox" id="sub" name="subject" />
+              <input type="text" value={title4} onChange={(event) => setTitle4(event.target.value)} className="ipbox" id="sub" name="subject" />
               <label htmlFor="yourm">Nội dung</label>
-              <textarea rows={3} value={title4} onChange={(event) => setTitle4(event.target.value)} id="yourm" className="ipbox" />
+              <textarea rows={3} value={title5} onChange={(event) => setTitle5(event.target.value)} id="yourm" className="ipbox" />
               <div className="button" onClick={handleSubmit}>
                 <input
                   type="button"
