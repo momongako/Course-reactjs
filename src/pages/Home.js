@@ -64,7 +64,7 @@ const Home = () => {
                   <div key={index + 1} className="col-lg-4 col-md-6 mb-4">
                     <Link to={'/detail/' + item.id} className="h5">
                       <div className="rounded overflow-hidden mb-2">
-                        {/* <img className="img-fluid" src={require(`./img/course-${index + 1}.jpg`)} /> */}
+                        <img className="img-fluid" src={require(`./img/course-${++index >= 6 ? index = 1 : index + 1}.jpg`)} />
                         <div className="bg-secondary p-4">
                           <div className="d-flex justify-content-between mb-3">
                             <small className="m-0">

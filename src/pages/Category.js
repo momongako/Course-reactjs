@@ -52,7 +52,7 @@ const Category = (prop) => {
                 <div key={index + 1} className="col-lg-3 col-md-6 mb-4">
                   <Link to={'/coursecategory/' + item.category}>
                     <div className="cat-item position-relative overflow-hidden rounded mb-2">
-                      <img className="img-fluid" src={require(`./img/cat-${item.id}.jpg`)} />
+                      <img className="img-fluid" src={require(`./img/cat-${index + 1 >= 8 ? index = 1 : index + 1}.jpg`)} />
                       <div className="cat-overlay text-white text-decoration-none">
                         <h4 className="text-white font-weight-medium">{item.category}</h4>
                         <span> Courses</span>
