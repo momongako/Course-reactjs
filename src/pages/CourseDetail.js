@@ -18,7 +18,7 @@ const CourseDetail = () => {
   useEffect(() => {
     console.log('user use effect!!');
     let country_url =
-      'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse/' + params.id;
+      'https://62c253232af60be89ed60e41.mockapi.io/Courses/' + params.id;
 
     console.log(country_url);
     fetch(country_url)
@@ -32,7 +32,7 @@ const CourseDetail = () => {
   useEffect(() => {
     console.log('user use effect!!');
     let country_url =
-      'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse/' + params.id;
+      'https://62c253232af60be89ed60e41.mockapi.io/Courses/' + params.id;
 
     console.log(country_url);
     fetch(country_url)
@@ -115,7 +115,8 @@ const CourseDetail = () => {
 
                   <ul className="course-list">
 
-                    {listTodo}
+                    {data && data.length > 0 ?
+                      listTodo : 'Loading...'}
 
                   </ul>
                 </div>
