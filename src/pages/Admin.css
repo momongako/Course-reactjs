@@ -4,7 +4,7 @@
 
 .table-wrapper {
   min-width: 1000px;
-  background: #fff;
+  background: #ddebf9;
   padding: 20px 25px;
   border-radius: 3px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -12,7 +12,7 @@
 
 .table-title {
   padding-bottom: 15px;
-  background: #435d7d;
+  background: #337cd7;
   color: #fff;
   padding: 16px 30px;
   margin: -20px -25px 10px;
@@ -276,4 +276,42 @@ nav#mySidebar {
 
 a.w3-bar-item.w3-button.w3-padding.w3-text-teal {
   color: #6d8cff !important;
+}
+
+.adminTableSTT{
+  width: 5%;
+}
+.adminTableCName{
+  width: 25%;
+}
+.adminTableCat{
+  width: 25%;
+}
+.adminTableLevel{
+  width: 15%;
+}
+.adminTablePic{
+  width: 5%;
+}
+.adminTablePrice{
+  width: 10%;
+}
+.adminTableEdit{
+  width: 15%;
+}
+.sort[data-sort] {
+  white-space: nowrap;
+  cursor: pointer;
+}
+.sort[data-sort]::after {
+    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI5IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik02LjUyNiAzLjVjLjQyMyAwIC42MzUtLjQzOC4zMy0uNzA4TDMuODQuMTI1YS41MjkuNTI5IDAgMDAtLjY4MiAwTC4xNDUgMi43OTJjLS4zMDYuMjctLjA5NC43MDguMzMuNzA4aDYuMDV6TS40NzQgNS41Yy0uNDIzIDAtLjYzNS40MzgtLjMzLjcwOEwzLjE2IDguODc1YS41MjkuNTI5IDAgMDAuNjgyIDBsMy4wMTQtMi42NjdjLjMwNi0uMjcuMDk0LS43MDgtLjMzLS43MDhILjQ3NnoiIGZpbGw9IiNCNkMyRDIiLz48L3N2Zz4=");
+    margin-left: 60%;
+}
+.sort[data-sort].asc::after {
+    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik02LjUyNiAzLjVjLjQyMyAwIC42MzUtLjQzOC4zMy0uNzA4TDMuODQuMTI1YS41MjkuNTI5IDAgMDAtLjY4MiAwTC4xNDUgMi43OTJjLS4zMDYuMjctLjA5NC43MDguMzMuNzA4aDYuMDV6IiBmaWxsPSIjQjZDMkQyIi8+PC9zdmc+") !important;
+    margin-top: -1px !important;
+}
+.sort[data-sort].desc::after {
+    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0uNDc0LjVjLS40MjMgMC0uNjM1LjQzOC0uMzMuNzA4TDMuMTYgMy44NzVhLjUyOS41MjkgMCAwMC42ODIgMGwzLjAxNC0yLjY2N0M3LjE2MS45MzggNi45NS41IDYuNTI1LjVILjQ3NnoiIGZpbGw9IiNCNkMyRDIiLz48L3N2Zz4=") !important;
+    margin-top: -1px !important;
 }
