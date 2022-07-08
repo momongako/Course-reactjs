@@ -73,8 +73,8 @@ const Footer = () => {
               </div>
               <div className="col-md-6 mb-5">
                 <h5
-                  className="text-primary text-uppercase mb-4 text-center"
-                  style={{ letterSpacing: '5px' }}
+                  className="text-primary text-uppercase mb-4"
+                  style={{ letterSpacing: '5px', marginLeft:'45px' }}
                 >
                   Our Courses
                 </h5>
