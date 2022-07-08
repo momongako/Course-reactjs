@@ -17,7 +17,7 @@ const Admin = () => {
   const [page, setPage] = useState(-1);
   const [direction, setDirection] = useState(1)
   const [entries, setEntries] = useState(5)
-
+  const [searchTerm, setSearchTerm] = useState('');
   
   useEffect(() => {
     let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses/';
@@ -60,6 +60,20 @@ const Admin = () => {
   const handlePageClick = (event) => {
     setPage(event.selected);
   };
+
+  // useEffect(() => {
+  //   let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses';
+  //   if (searchTerm.length > 0) {
+  //     url = url + '?search=' + searchTerm;
+  //   }
+  //   fetch(url)
+  //     .then((Response) => Response.json())
+  //     .then((data) => {
+  //       // setCurrentItems(data)
+  //       setProducts(data); 
+  //       setCurrentItems(data);
+  //     });
+  // }, [searchTerm]);
 
   const deleteUser = (id) => {
     fetch('https://62c253232af60be89ed60e41.mockapi.io/Courses/' + id, {
@@ -162,6 +176,7 @@ useEffect(() => {  if (currentItems!== null) {
                         className="dataTable-input"
                         placeholder="Search..."
                         type="text"
+                        onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </div>
                   </div>
