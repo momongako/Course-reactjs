@@ -85,8 +85,8 @@ const CourseDetail = () => {
       <div className="top-container dark-background">
         <div className="dark-background-inner-position-container">
           <div className="udlite-text-sm clp-lead">
-            <h1 className="udlite-heading-xl clp-lead__title clp-lead__title--small" data-purpose="lead-title">Learn {course.category} {course.name}: The Complete {course.category} Programming Course</h1>
-            <div className="udlite-text-md clp-lead__headline" data-purpose="lead-headline">Learn A-Z everything about {course.category}, from the basics, to advanced topics like {course.category} GUI, and more!</div>
+            <h1 className="udlite-heading-xl clp-lead__title clp-lead__title--small" data-purpose="lead-title">Learn Python: The Complete Python Programming Course</h1>
+            <div className="udlite-text-md clp-lead__headline" data-purpose="lead-headline">Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!</div>
           </div>
         </div>
       </div>
