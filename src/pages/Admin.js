@@ -70,7 +70,7 @@ const Admin = () => {
   }
 
   useEffect(() => {
-    if (page*entries>products.length){
+    if (products!==null&&page*entries>products.length){
       setPage(0)
     }
     pageHandler(products)
@@ -143,7 +143,7 @@ useEffect(() => {  if (currentItems!== null) {
                       data-toggle="modal"
                     >
                       <i className="fa-solid fa-circle-plus"></i>
-                      <span className="py-1 px-1">Add New Employee</span>
+                      <span className="py-1 px-1">Add New Course</span>
                     </button>
                   </div>
                 </div>
@@ -157,8 +157,6 @@ useEffect(() => {  if (currentItems!== null) {
                           <option value={5}>5</option>
                           <option value={10}>10</option>
                           <option value={15}>15</option>
-                          <option value={20}>20</option>
-                          <option value={25}>25</option>
                         </select>
                         entries per page
                       </label>
