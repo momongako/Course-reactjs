@@ -20,7 +20,7 @@ const Footer = () => {
       return (
 
         <Link to={'/coursecategory' + '/' + item.category}>
-          <div className="col-lg-3 col-md-6 mb-4 text-white">
+          <div className="col-lg-3 col-md-6 mb-4 text-white" style={{float:'left', marginRight:'50px',marginLeft:'30px'}}>
             {item.category}
           </div>
         </Link>
@@ -73,7 +73,7 @@ const Footer = () => {
               </div>
               <div className="col-md-6 mb-5">
                 <h5
-                  className="text-primary text-uppercase mb-4"
+                  className="text-primary text-uppercase mb-4 text-center"
                   style={{ letterSpacing: '5px' }}
                 >
                   Our Courses
