@@ -3,52 +3,37 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./Admin.css";
 import ReactPaginate from "react-paginate";
-import AdminModal from "../components/AdminModal";
 import { useSelector, useDispatch } from "react-redux";
 import {courseInfoActions} from "../store/ItemInfoSlice"
 import { fetchCourseData, fetchCourseActions, fetchCategoryActions } from "../store/Fetch";
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Admin = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.courses.courseData);
-  const isPending = useSelector((state) => state.courses.isPending);
   const [products, setProducts] = useState(null);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(-1);
-  const [showEdit, setEditShow] = useState(false);
-  const [showNew, setNewShow] = useState(false);
   const [direction, setDirection] = useState(1)
   const [entries, setEntries] = useState(5)
 
-  const handleEditClose = () => setEditShow(false);
-  const handleNewClose = () => setNewShow(false);
-  const handleEditShow = () => setEditShow(true)
-  const handleNewShow = () => setNewShow(true);
-  const handleCancle=()=>{setEditShow(false);setNewShow(false);}
   
-  
-  const requestData = () => {
-    dispatch(fetchCourseActions.fetchDataPending);
-    fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
+  useEffect(() => {
+    let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses/';
+    fetch(url)
       .then((response) => response.json())
-      .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)))
-  };
-
-  useEffect(() => {
-    requestData()
-  }, []);
+      .then((data) => {
+        setProducts(data);
+      });
+}, []);
 
   
   useEffect(() => {
-    setProducts(data)
     if (products != null) {
       setPage(0);
     }
-  }, [data]);
-
-
+  }, [products]);
 
 
   const pageHandler =(data)=>{
@@ -64,10 +49,6 @@ const Admin = () => {
     }
   }
 
-  const editHandler=(item)=>{
-    dispatch(courseInfoActions.getCourseInfo(item))
-    handleEditShow()
-  }
 
   useEffect(() => {
     if (products!==null&&page*entries>products.length){
@@ -78,6 +59,18 @@ const Admin = () => {
 
   const handlePageClick = (event) => {
     setPage(event.selected);
+  };
+
+  const deleteUser = (id) => {
+    fetch('https://62c253232af60be89ed60e41.mockapi.io/Courses/' + id, {
+      method: 'DELETE',
+    }).then(() => {
+      let result = [...currentItems];
+      result = result.filter((item) => {
+        return item.id !== id;
+      });
+      setCurrentItems(result);
+    });
   };
 
 const [products_list,setProductList]=useState([]);
@@ -91,12 +84,15 @@ useEffect(() => {  if (currentItems!== null) {
       <td className='adminTablePic'><img src={item.picture} alt='' width='50px' height='50px'/></td>
       <td className='adminTablePrice'>${item.price}</td>
       <td className='adminTableEdit'>
-        <button onClick={()=>{editHandler(item)}} className="btn btn-primary mx-1 adminEditButton" data-toggle="modal">
+      <Link to={'/edit/' + item.id}>
+        <button className="btn btn-primary mx-1 adminEditButton">
         <i className="fa-solid fa-pen-to-square"></i>
         </button>
-        <button className="btn btn-danger mx-1 adminDelete,Button" data-toggle="modal">
+        </Link>
+        <button className="btn btn-danger mx-1 adminDelete,Button" data-bs-toggle="modal" onClick={() => deleteUser(item.id)}>
         <i className="fa-solid fa-trash"></i>
         </button>
+
       </td>
     </tr>
   ));
@@ -105,7 +101,6 @@ useEffect(() => {  if (currentItems!== null) {
   
   const SortColumn = (event,field, type) => {
     const sortData = [...products];
-    // const sortData = [...currentItems];
     if (type === 'number') {
       sortData.sort((a, b) => direction * (a[field] - b[field]));
     } else if (type === 'string') {
@@ -137,14 +132,15 @@ useEffect(() => {  if (currentItems!== null) {
                     </h2>
                   </div>
                   <div className="col-6 my-auto">
+                  <Link to="edit/new" className="ms-5">
                     <button
-                      onClick={handleNewShow}
                       className="btn btn-success"
                       data-toggle="modal"
                     >
                       <i className="fa-solid fa-circle-plus"></i>
                       <span className="py-1 px-1">Add New Course</span>
                     </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -170,7 +166,7 @@ useEffect(() => {  if (currentItems!== null) {
                     </div>
                   </div>
                   <div className="dataTable-container">
-                    <table id="datatablesSimple" className="dataTable-table">
+                    <table id="datatablesSimple" className="responsive">
                       <thead>
                         <tr className="theadRow">
                           <th className="sort" data-sort="number" onClick={(e)=>SortColumn(e,'id','number')}>

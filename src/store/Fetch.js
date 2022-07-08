@@ -90,7 +90,7 @@ export const fetchCategories = createSlice({
   initialState: initCategories,
   reducers: {
     updateCategories(state,action){
-      state.categories=action
+      state.categories.push(action.payload)
     }
   }
 });
