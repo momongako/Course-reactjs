@@ -81,12 +81,17 @@ const Header = () => {
                   Admin
                 </Link>
               </div>
-              <Link to="cart" className="btn btn-outline-info">
-                <i className="fas fa-shopping-cart" />
-                <span class="badge badge-danger" id="lblCartCount">
-                  {(isEmpty) ? 0 : totalUniqueItems}
-                </span>
-              </Link>
+              <div>
+                <Link to="cart" className="btn btn-outline-info">
+                  <i className="fas fa-shopping-cart" />
+                  <span class="badge badge-danger" id="lblCartCount">
+                    {(isEmpty) ? 0 : totalUniqueItems}
+                  </span>
+                </Link>
+                <Link to="login" className="btn btn-outline-info">
+                  <a>Login</a>
+                </Link>
+              </div>
             </div>
           </nav>
         </div>

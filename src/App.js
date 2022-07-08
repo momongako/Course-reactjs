@@ -19,6 +19,7 @@ import { getCourses } from './store/Fetch'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotPage from "./pages/NotPage";
+import Login from "./pages/Login";
 export default function App() {
   const dispatch = useDispatch();
   const [courseData, setCourseData] = useState(null)
@@ -72,6 +73,7 @@ export default function App() {
           <Route path="admin" element={<Admin />} />
           <Route path='detail/:id' element={<CourseDetail />} />
           <Route path="admin/edit/:id" element={<CourseEdit />} />
+          <Route path="login" element={<Login />} />
           <Route path='*' element={<NotPage />} />
         </Route>
       </Routes>

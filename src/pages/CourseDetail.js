@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Loading from './Loading';
 import { CartProvider, useCart } from 'react-use-cart';
-
+import { toast } from 'react-toastify';
 const CourseDetail = () => {
   const params = useParams('');
   const [course, setCourse] = useState(null);
@@ -159,7 +159,10 @@ const CourseDetail = () => {
                 </li>
               </ul>
 
-              <button onClick={() => addItem(course)} className="btn text-uppercase enroll">Buy Course</button>
+              <button onClick={() => addItem(course, toast.success('Thêm Giỏ hàng thành công!!', {
+                position: "top-center",
+
+              }))} className="btn text-uppercase enroll">Buy Course</button>
 
               <h4 className="title">Reviews</h4>
               <div className="content">

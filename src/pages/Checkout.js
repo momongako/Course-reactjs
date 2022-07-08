@@ -4,19 +4,23 @@ import './Checkout.css';
 import { CartProvider, useCart } from 'react-use-cart';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';;
 
 
 const Checkout = () => {
   const [title, setTitle] = useState('')
   const [title2, setTitle2] = useState('')
   const [title3, setTitle3] = useState('')
+  let navigate = useNavigate();
   const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem, cartTotal, emptyCart } =
     useCart();
   const Addcart = () => {
+
+
     if (title && title2 && title3) {
       toast.success('Thanh Toán thành công', {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -27,10 +31,12 @@ const Checkout = () => {
       setTitle2('')
       setTitle3('')
       emptyCart();
+      navigate(-1);
+
       return;
 
     } else (
-      toast.error('Dữ liệu sai hoặc thiếu vui lòng nhập lại!', {
+      toast.error('Sai dữ liệu vui lòng nhập lại hoặc kiểm tra giỏ hàng!', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,

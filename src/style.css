@@ -11392,7 +11392,11 @@ button.btn.btn-primary.btn-lg.align-content-center a {
 }
 
 /* -------------------------------- */
-/* Cart css*/
+/* Cart,login css*/
+a.btn.btn-outline-info {
+  margin-right: 9px;
+}
+
 img.img-fluid.mx-auto.d-block.image {
   margin-top: 24px;
 }
@@ -15556,3 +15560,23 @@ del {
 }
 
 /* end Loading */
+/* css Login */
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+/* end css login */
