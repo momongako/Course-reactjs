@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { fetchCourseActions, fetchCategoryActions } from "../store/Fetch";
 import { useSelector, useDispatch } from "react-redux";
 import Scroll from "../components/Scroll";
+import AddField from "../components/AddField";
 
 const CourseEdit = () => {
   const params = useParams();
@@ -14,6 +15,7 @@ const CourseEdit = () => {
   const [product, setProduct] = useState(null);
   const data = useSelector((state) => state.courses.courseData);
   const [sectionName,setSectionName] = useState(null);
+  const [initData,setinitData] = useState([]);
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -29,7 +31,6 @@ const CourseEdit = () => {
           setProduct(data);
         });
     } else {
-      let initData = {};
       setProduct(initData);
     }
   }, []);
@@ -82,7 +83,7 @@ const CourseEdit = () => {
     const name = target.name;
 
     let data = { ...product };
-    data[name] = value;
+    data[name] = value; 
     setProduct(data);
   };
 
@@ -250,17 +251,20 @@ const CourseEdit = () => {
                                 </td>
                                 <td>
                                     <Scroll>
-                                  
                                       {product!==null?(product.content.map((item,key1=index) => (
                                         <>
                                         <h4>SECTION:<input className="col-6 border" value={Object.values(item)[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4>
-                                        <h4>SECTION:<input className="col-6 border" value={Object.values(product.content[key1])[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4>
+                                        {/* <h4>SECTION:<input className="col-6 border" value={Object.values(product.content[key1])[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4> */}
 
                                         {Object.values(item)[0].map((content,key2=index)=>
                                             <div className="ms-5 my-1 border col-10"><input className="col-12" value ={content} name={key2} onChange={(e) => handleSectionContent(e,key1)} /></div>
                                           )}
                                         </>
-                                      ))):(<><tr></tr></>)}
+                                      ))):(<>
+                                      <h4>SECTION:<AddField/></h4>
+                                      <div className="ms-5 my-1 border col-10"><AddField/></div>
+                                      
+                                      </>)}
                                   </Scroll>
                                 </td>
                               </tr>
