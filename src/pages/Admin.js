@@ -16,8 +16,8 @@ const Admin = () => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(-1);
   const [direction, setDirection] = useState(1)
-  const [entries, setEntries] = useState(5)
   const [searchTerm, setSearchTerm] = useState('');
+
   
   useEffect(() => {
     let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses/';
@@ -28,38 +28,6 @@ const Admin = () => {
       });
 }, []);
 
-  
-  useEffect(() => {
-    if (products != null) {
-      setPage(0);
-    }
-  }, [products]);
-
-
-  const pageHandler =(data)=>{
-    if (data !== null) {
-      let itemsPerPage = entries;
-      const starOffset = page * itemsPerPage;
-      let endOffset = (page + 1) * itemsPerPage;
-      if (endOffset > data.length) {
-        endOffset = data.length;
-      }
-      setCurrentItems(data.slice(starOffset, endOffset));
-      setPageCount(Math.ceil(data.length / itemsPerPage));
-    }
-  }
-
-
-  useEffect(() => {
-    if (products!==null&&page*entries>products.length){
-      setPage(0)
-    }
-    pageHandler(products)
-  },[page||entries]);
-
-  const handlePageClick = (event) => {
-    setPage(event.selected);
-  };
 
   useEffect(() => {
     let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses';
@@ -73,6 +41,36 @@ const Admin = () => {
         setProducts(data); 
       });
   }, [searchTerm]);
+
+  
+  useEffect(() => {
+    if (products != null) {
+      setPage(0);
+    }
+  }, [products]);
+
+
+  const pageHandler =(data)=>{
+    if (data !== null) {
+      let itemsPerPage = 10;
+      const starOffset = page * itemsPerPage;
+      let endOffset = (page + 1) * itemsPerPage;
+      if (endOffset > data.length) {
+        endOffset = data.length;
+      }
+      setCurrentItems(data.slice(starOffset, endOffset));
+      setPageCount(Math.ceil(data.length / itemsPerPage));
+    }
+  }
+
+
+  useEffect(() => {
+    pageHandler(products)
+  },[page]);
+
+  const handlePageClick = (event) => {
+    setPage(event.selected);
+  };
 
   const deleteUser = (id) => {
     fetch('https://62c253232af60be89ed60e41.mockapi.io/Courses/' + id, {
@@ -97,12 +95,12 @@ useEffect(() => {  if (currentItems!== null) {
       <td className='adminTablePic'><img src={item.picture} alt='' width='50px' height='50px'/></td>
       <td className='adminTablePrice'>${item.price}</td>
       <td className='adminTableEdit'>
-      <Link to={'/edit/' + item.id}>
+      <Link to={'edit/' + item.id}>
         <button className="btn btn-primary mx-1 adminEditButton">
         <i className="fa-solid fa-pen-to-square"></i>
         </button>
         </Link>
-        <button className="btn btn-danger mx-1 adminDelete,Button" data-bs-toggle="modal" onClick={() => deleteUser(item.id)}>
+        <button className="btn btn-danger mx-1 adminDelete,Button" onClick={() => deleteUser(item.id)}>
         <i className="fa-solid fa-trash"></i>
         </button>
 
@@ -148,7 +146,6 @@ useEffect(() => {  if (currentItems!== null) {
                   <Link to="edit/new" className="ms-5">
                     <button
                       className="btn btn-success"
-                      data-toggle="modal"
                     >
                       <i className="fa-solid fa-circle-plus"></i>
                       <span className="py-1 px-1">Add New Course</span>
@@ -160,22 +157,11 @@ useEffect(() => {  if (currentItems!== null) {
               <div className="card-body col-12">
                 <div className="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                   <div className="dataTable-top">
-                    <div className="dataTable-dropdown">
-                      <label>
-                        <select className="dataTable-selector" onChange={(e)=>{setEntries(e.target.value)}}>
-                          <option value={5}>5</option>
-                          <option value={10}>10</option>
-                          <option value={15}>15</option>
-                        </select>
-                        entries per page
-                      </label>
-                    </div>
                     <div className="dataTable-search">
                       <input
                         className="dataTable-input"
                         placeholder="Search..."
                         type="text"
-                        onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </div>
                   </div>
@@ -212,7 +198,7 @@ useEffect(() => {  if (currentItems!== null) {
                   </div>
                   <div className="clearfix">
                 <div className="hint-text">
-                  Showing <b>{entries}</b> out of <b>{products.length}</b> entries
+                  Showing <b>10</b> out of <b>{products.length}</b> entries
                 </div>
                 <ReactPaginate
                   previousLabel="Previous"
