@@ -1,32 +1,6 @@
 import React from 'react';
 
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 const Footer = () => {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    let url = 'https://62b04ad4e460b79df042497f.mockapi.io/ListTest/dataCourse';
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
-
-  var catagory_list = [];
-  if (data != null)
-    catagory_list = data.map((item) => {
-      return (
-
-        <Link to={'/coursecategory' + '/' + item.category}>
-          <div className="col-lg-3 col-md-6 mb-4 text-white" style={{float:'left', marginRight:'50px',marginLeft:'30px'}}>
-            {item.category}
-          </div>
-        </Link>
-
-      )
-    })
   return (
     <>
       <div
@@ -74,11 +48,32 @@ const Footer = () => {
               <div className="col-md-6 mb-5">
                 <h5
                   className="text-primary text-uppercase mb-4"
-                  style={{ letterSpacing: '5px', marginLeft:'45px' }}
+                  style={{ letterSpacing: '5px' }}
                 >
                   Our Courses
                 </h5>
-                {catagory_list}
+                <div className="d-flex flex-column justify-content-start">
+                  <a className="text-white mb-2" href="#">
+                    <i className="fa fa-angle-right mr-2" />
+                    Web Design
+                  </a>
+                  <a className="text-white mb-2" href="#">
+                    <i className="fa fa-angle-right mr-2" />
+                    Apps Design
+                  </a>
+                  <a className="text-white mb-2" href="#">
+                    <i className="fa fa-angle-right mr-2" />
+                    Marketing
+                  </a>
+                  <a className="text-white mb-2" href="#">
+                    <i className="fa fa-angle-right mr-2" />
+                    Research
+                  </a>
+                  <a className="text-white" href="#">
+                    <i className="fa fa-angle-right mr-2" />
+                    SEO
+                  </a>
+                </div>
               </div>
             </div>
           </div>
