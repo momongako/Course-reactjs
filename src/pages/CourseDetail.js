@@ -12,6 +12,7 @@ const CourseDetail = () => {
   const params = useParams('');
   const [course, setCourse] = useState(null);
   const [data, setData] = useState([])
+  const [review,setReview] = useState(null);
 
   const { addItem } = useCart();
   const { updateItem } = useCart();
@@ -22,28 +23,27 @@ const CourseDetail = () => {
     let country_url =
       'https://62c253232af60be89ed60e41.mockapi.io/Courses/' + params.id;
 
-    console.log(country_url);
     fetch(country_url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCourse(data);
-
+      });
+    fetch ('https://62c253232af60be89ed60e41.mockapi.io/Reviews')
+    .then((response) => response.json())
+      .then((data) => {
+        setReview(data);
       });
   }, []);
   useEffect(() => {
     let country_url =
       'https://62c253232af60be89ed60e41.mockapi.io/Courses/' + params.id;
 
-    console.log(country_url);
     fetch(country_url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.content);
         setData(data.content)
 
       });
-    console.log('check data', data)
 
   }, []);
 
@@ -73,8 +73,6 @@ const CourseDetail = () => {
 
 
   ))
-
-  console.log('check course : ', course) // = section1Name
 
 
 
@@ -175,7 +173,7 @@ const CourseDetail = () => {
                         <i className="fa fa-star checked" />
                         <i className="fa fa-star checked" />
                         <i className="fa fa-star checked" />
-                        <i className="fa fa-star" />
+                        <i className="fa fa-star checked" />
                         <i className="fa fa-star" />
                       </div>
                       <span>Outstanding</span>
