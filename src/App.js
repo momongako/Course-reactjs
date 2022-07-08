@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Category from "./pages/Category";
 import CourseDetail from "./pages/CourseDetail";
+import CourseEdit from "./pages/CourseEdit";
 import Admin from "./pages/Admin";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -70,6 +71,7 @@ export default function App() {
           <Route path="courseCategory/:name" element={<CourseCategory />} />
           <Route path="admin" element={<Admin />} />
           <Route path='detail/:id' element={<CourseDetail />} />
+          <Route path="admin/edit/:id" element={<CourseEdit />} />
           <Route path='*' element={<NotPage />} />
         </Route>
       </Routes>
