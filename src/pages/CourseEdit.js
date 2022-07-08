@@ -13,6 +13,7 @@ const CourseEdit = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
   const data = useSelector((state) => state.courses.courseData);
+  const [sectionName,setSectionName] = useState(null);
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -31,17 +32,6 @@ const CourseEdit = () => {
       let initData = {};
       setProduct(initData);
     }
-  }, []);
-
-  const requestData = () => {
-    dispatch(fetchCourseActions.fetchDataPending);
-    fetch("https://62c253232af60be89ed60e41.mockapi.io/Courses")
-      .then((response) => response.json())
-      .then((data) => dispatch(fetchCourseActions.fetchDataSuccess(data)));
-  };
-
-  useEffect(() => {
-    requestData();
   }, []);
 
   const categories = useSelector((state) => state.categories.categories);
@@ -96,13 +86,23 @@ const CourseEdit = () => {
     setProduct(data);
   };
 
-  const handleSectionName=(event,sectionNumber)=>{
+//   const handleSectionName=(event,section)=>{
+//     const target = event.target;
+//     const value = target.value;
+//     let data = { ...product };
+//     let content = data.content;
+//     Object.values(section)[1] = value
+//     setProduct(data)
+//   }
+
+  const handleSectionName=(event,sectionNumber,moreInfo)=>{
     const target = event.target;
     const value = target.value;
-
     let data = { ...product };
     let content = data.content;
-    Object.values(content[sectionNumber])[1] = value
+    console.log(1,Object.values(content[sectionNumber])[1])
+    console.log(2,Object.values(moreInfo)[1])
+    // Object.values(moreInfo)[1] = value
     setProduct(data)
   }
 
@@ -250,32 +250,17 @@ const CourseEdit = () => {
                                 </td>
                                 <td>
                                     <Scroll>
-                                  <table className="col-12">
-                                    <thead>
-                                     <tr>
-                                        <th>Section</th>
-                                        <th>Section content</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
+                                  
                                       {product!==null?(product.content.map((item,key1=index) => (
                                         <>
+                                        <h4>SECTION:<input className="col-6 border" value={Object.values(item)[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4>
+                                        <h4>SECTION:<input className="col-6 border" value={Object.values(product.content[key1])[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4>
+
                                         {Object.values(item)[0].map((content,key2=index)=>
-                                        <tr key={key2}>
-                                            <td
-                                            rowSpan={
-                                              item.length
-                                            }
-                                            >
-                                             <input value={Object.values(key1)[1]} onChange={(e) => handleSectionName(e,key1)}/>   
-                                            </td>
-                                            <td><input value ={content} name={key2} onChange={(e) => handleSectionContent(e,key1)} /></td>
-                                        </tr>
+                                            <div className="ms-5 my-1 border col-10"><input className="col-12" value ={content} name={key2} onChange={(e) => handleSectionContent(e,key1)} /></div>
                                           )}
                                         </>
                                       ))):(<><tr></tr></>)}
-                                    </tbody>
-                                  </table>
                                   </Scroll>
                                 </td>
                               </tr>
