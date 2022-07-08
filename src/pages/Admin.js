@@ -61,19 +61,18 @@ const Admin = () => {
     setPage(event.selected);
   };
 
-  // useEffect(() => {
-  //   let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses';
-  //   if (searchTerm.length > 0) {
-  //     url = url + '?search=' + searchTerm;
-  //   }
-  //   fetch(url)
-  //     .then((Response) => Response.json())
-  //     .then((data) => {
-  //       // setCurrentItems(data)
-  //       setProducts(data); 
-  //       setCurrentItems(data);
-  //     });
-  // }, [searchTerm]);
+  useEffect(() => {
+    let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses';
+    if (searchTerm.length > 0) {
+      url = url + '?search=' + searchTerm;
+    }
+    fetch(url)
+      .then((Response) => Response.json())
+      .then((data) => {
+        setCurrentItems(data)
+        setProducts(data); 
+      });
+  }, [searchTerm]);
 
   const deleteUser = (id) => {
     fetch('https://62c253232af60be89ed60e41.mockapi.io/Courses/' + id, {
