@@ -37,7 +37,7 @@ const Cart = () => {
                             <div className="col-md-8">
                               <div className="info">
                                 <div className="row">
-                                  <div className="col-md-5 product-name">
+                                  <div className="col-md-4 product-name">
                                     <div className="product-name">
                                       <a href="#">{item.name}</a>
                                       <div className="product-info">
@@ -52,26 +52,37 @@ const Cart = () => {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className="col-md-4 quantity">
+                                  <div className="col-md-2 quantity">
 
 
-                                    quantity : {item.quantity}
+                                    Quantity  {item.quantity}
 
                                   </div>
-                                  <button
-                                    onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-                                  >
-                                    -
-                                  </button>
-                                  <button
-                                    onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-                                  >
-                                    +
-                                  </button>
-                                  <div className="col-md-3 price">
-                                    <span>${item.price}</span>
+                                  <div className="col-md-1 ">
+                                    {/* <button type="button" class="btn btn-primary"
+                                      onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+                                    >
+                                      +
+                                    </button> */}
+                                    <i onClick={() => updateItemQuantity(item.id, item.quantity + 1)} class="fa fad fa-chevron-up"></i>
+                                    <i onClick={() => updateItemQuantity(item.id, item.quantity - 1)} class="fa fad fa-chevron-down"></i>
                                   </div>
-                                  <button onClick={() => removeItem(item.id)} >delete</button>
+
+                                  {/* <div className="col-md-1 price">
+                                    <i onClick={() => updateItemQuantity(item.id, item.quantity - 1)} class="fa fad fa-chevron-down"></i>
+                                    <button type="button" class="btn btn-primary"
+                                      onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+                                    >
+                                      -
+                                    </button>
+                                  </div> */}
+                                  <div className="col-md-3 ">
+                                    <h2>${item.price}</h2>
+                                  </div>
+                                  <div className='col-md-2 '>
+                                    {/* <button type="button" class="btn btn-danger" onClick={() => removeItem(item.id)} >delete</button> */}
+                                    <h2><i onClick={() => removeItem(item.id)} class="fa fad fa-trash"></i></h2>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -83,11 +94,13 @@ const Cart = () => {
                   </div>
                 </div>
                 <SummaryCart />
-                <Link to="/checkout">
-                  <button className="btn btn-danger m-1" type="button">
-                    Checkout
-                  </button>
-                </Link>
+                <div class="col-md-12 text-right">
+                  <Link to="/checkout">
+                    <button className="btn btn-danger m-1" type="button">
+                      Checkout
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
