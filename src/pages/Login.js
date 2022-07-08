@@ -2,11 +2,10 @@ import { Link, useNavigate } from 'react-router-dom';;
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 const Login = () => {
-    const [usename, setUseName] = useState('')
-    const [password, setPassword] = useState('')
-    const [url, setUrl] = useState('')
+
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const navigate = useNavigate();
     const database = [
         {
             username: "user1",
@@ -42,6 +41,7 @@ const Login = () => {
                 setErrorMessages({ name: "pass", message: errors.pass });
             } else {
                 setIsSubmitted(true);
+                navigate('/admin/')
             }
         } else {
             // Username not found
@@ -52,7 +52,7 @@ const Login = () => {
     // Generate JSX code for error message
     const renderErrorMessage = (name) =>
         name === errorMessages.name && (
-            <div className="error">{errorMessages.message}</div>
+            <div className="error" style={{ color: 'red' }}>{errorMessages.message}</div>
         );
 
 
@@ -107,29 +107,6 @@ const Login = () => {
         </div>
 
     );
-    // const handleSubmit = () => {
-    //     let name = 'maou'
-    //     let password = '123'
-    //     let navigate = useNavigate();
-    //     navigate.push('/admin');
-    //     setUrl('/admin')
-    //     // if (setUseName(name) && setPassword(name)) {
-    //     //     navigate.push('/admin');
-    //     //     return;
-    //     // } else {
-    //     //     toast.error('Sai tên đăng nhập hoặc mật khẩu vui lòng nhập lại!', {
-    //     //         position: "top-center",
-    //     //         autoClose: 5000,
-    //     //         hideProgressBar: false,
-    //     //         closeOnClick: true,
-    //     //         pauseOnHover: true,
-    //     //         draggable: true,
-    //     //         progress: undefined,
-    //     //     })
-    //     // }
-
-    //     console.log('ok')
-    // }
 
 
 
