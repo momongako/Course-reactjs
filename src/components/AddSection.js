@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import AddContent from './AddContent';
 
-function AddField(field) {
-  const [inputList, setInputList] = useState([{ field: '' }]);
+function AddSection(props) {
+  const [inputList, setInputList] = useState([{ props: '' }]);
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -20,7 +21,7 @@ function AddField(field) {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { field: '' }]);
+    setInputList([...inputList, { props: '' }]);
   };
 
   return (
@@ -29,9 +30,9 @@ function AddField(field) {
         return (
           <div className="box">
             <input
-              name={field}
-              placeholder="Enter First Name"
-              value={x.field}
+              name={props.field}
+              placeholder={"Enter "+props.field+" Name"}
+              value={x.props}
               onChange={(e) => handleInputChange(e, i)}
             />
             <div className="btn-box">
@@ -44,6 +45,7 @@ function AddField(field) {
                 <button onClick={handleAddClick}>Add</button>
               )}
             </div>
+            <div className="ms-5 my-1 border col-10"><AddContent field="content"/></div>
           </div>
         );
       })}
@@ -51,4 +53,4 @@ function AddField(field) {
   );
 }
 
-export default AddField;
+export default AddSection;
