@@ -253,7 +253,7 @@ const CourseEdit = () => {
                                     <Scroll>
                                         {product!==null?(product.content.map((item,key1=index) => (
                                         <>
-                                        <h4>SECTION:<input className="col-6 border" value={Object.values(item)[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4>
+                                        {/* <h4>SECTION:<input className="col-6 border" value={Object.values(item)[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4> */}
                                         <h4>SECTION:<input className="col-6 border" value={Object.values(product.content[key1])[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4>
 
                                         {Object.values(item)[0].map((content,key2=index)=>
