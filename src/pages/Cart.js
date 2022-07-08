@@ -52,37 +52,15 @@ const Cart = () => {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className="col-md-2 quantity">
 
-
-                                    Quantity  {item.quantity}
-
-                                  </div>
-                                  <div className="col-md-1 ">
-                                    {/* <button type="button" class="btn btn-primary"
-                                      onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-                                    >
-                                      +
-                                    </button> */}
-                                    <i onClick={() => updateItemQuantity(item.id, item.quantity + 1)} class="fa fad fa-chevron-up"></i>
-                                    <i onClick={() => updateItemQuantity(item.id, item.quantity - 1)} class="fa fad fa-chevron-down"></i>
-                                  </div>
-
-                                  {/* <div className="col-md-1 price">
-                                    <i onClick={() => updateItemQuantity(item.id, item.quantity - 1)} class="fa fad fa-chevron-down"></i>
-                                    <button type="button" class="btn btn-primary"
-                                      onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-                                    >
-                                      -
-                                    </button>
-                                  </div> */}
-                                  <div className="col-md-3 ">
-                                    <h2>${item.price}</h2>
+                                  <div className="col-md-6 ">
+                                    <span><h2>  ${item.price}</h2></span>
                                   </div>
                                   <div className='col-md-2 '>
                                     {/* <button type="button" class="btn btn-danger" onClick={() => removeItem(item.id)} >delete</button> */}
                                     <h2><i onClick={() => removeItem(item.id)} class="fa fad fa-trash"></i></h2>
                                   </div>
+                                  <div>{item.description}</div>
                                 </div>
                               </div>
                             </div>

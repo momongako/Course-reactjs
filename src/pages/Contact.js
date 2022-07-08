@@ -19,7 +19,7 @@ const Contact = () => {
       return;
     }
     else (
-      toast.error(`Thông Tin không chính xác `)
+      toast.error(`Thông Tin không chính xác hoặc sai vui lòng kiểm tra lại!`)
     )
   }
   return (

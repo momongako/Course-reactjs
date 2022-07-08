@@ -82,7 +82,10 @@ const Header = () => {
                 </Link>
               </div>
               <Link to="cart" className="btn btn-outline-info">
-                <i className="fas fa-shopping-cart" /><sup>{(isEmpty) ? 0 : totalUniqueItems}</sup>
+                <i className="fas fa-shopping-cart" />
+                <span class="badge badge-danger" id="lblCartCount">
+                  {(isEmpty) ? 0 : totalUniqueItems}
+                </span>
               </Link>
             </div>
           </nav>

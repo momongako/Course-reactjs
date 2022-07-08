@@ -30,7 +30,7 @@ const Checkout = () => {
       return;
 
     } else (
-      toast.error('Dữ liệu sai vui lòng nhập lại!', {
+      toast.error('Dữ liệu sai hoặc thiếu vui lòng nhập lại!', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -48,7 +48,7 @@ const Checkout = () => {
       <div className="card mx-auto col-md-5 col-8 mt-3 p-0">
         <img className="mx-auto pic" src="http://300b5338.vws.vegacdn.vn/image/img.news/0/0/0/8341.jpg?v=1&w=480&h=295&nocache=1" />
         <div className="card-title d-flex px-4">
-          <p className="item text-muted">Barcelona<label className="register">®</label> Chair</p>
+          <p className="item text-muted">Tổng Tiền : </p>
           <p>${cartTotal}</p>
         </div>
         <div className="card-body">
