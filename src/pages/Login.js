@@ -42,6 +42,7 @@ const Login = () => {
             } else {
                 setIsSubmitted(true);
                 navigate('/admin/')
+                { ButtoncheckLogin }
             }
         } else {
             // Username not found
