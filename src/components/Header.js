@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { CartProvider, useCart } from 'react-use-cart';
+import { themeContext, themeEdit } from '../App'
 
 const Header = () => {
   const [title, setTitile] = useState('')
@@ -10,7 +11,12 @@ const Header = () => {
   };
   const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
     useCart();
-
+  const [theme] = useContext(themeContext);
+  const login = (
+    <Link id={theme} to="login" className="btn btn-outline-info" >
+      <a >login</a>
+    </Link>
+  )
   return (
     <header className="container-fluid">
       <div className="row border-top px-xl-5 navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
@@ -88,9 +94,7 @@ const Header = () => {
                     {(isEmpty) ? 0 : totalUniqueItems}
                   </span>
                 </Link>
-                <Link to="login" className="btn btn-outline-info">
-                  <a>Login</a>
-                </Link>
+                {login}
               </div>
             </div>
           </nav>

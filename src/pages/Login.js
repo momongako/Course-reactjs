@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';;
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
-const Login = () => {
+import { themeContext, themeEdit } from '../App'
+const Login = (props) => {
 
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -40,14 +41,16 @@ const Login = () => {
                 // Invalid password
                 setErrorMessages({ name: "pass", message: errors.pass });
             } else {
+
                 setIsSubmitted(true);
                 navigate('/admin/')
-                { ButtoncheckLogin }
+
             }
         } else {
             // Username not found
             setErrorMessages({ name: "uname", message: errors.uname });
         }
+
     };
 
     // Generate JSX code for error message
@@ -100,7 +103,7 @@ const Login = () => {
                     </div>
                     <a href="#!" className="text-body">Forgot password?</a>
                 </div>
-                <div className="text-center text-lg-start mt-4 pt-2">
+                <div onClick={props.themeEdit} className="text-center text-lg-start mt-4 pt-2">
                     <Link to="" type="button" onClick={handleSubmit} className="btn btn-primary btn-lg" style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>Login</Link>
                     <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!" className="link-danger">Register</a></p>
                 </div>
@@ -122,7 +125,7 @@ const Login = () => {
                     {isSubmitted ? <div className="d-flex justify-content-center" ><h1>User is successfully logged in</h1></div> : renderForm}
                 </div>
             </div>
-
+            <button onClick={props.themeEdit} >ok</button>
         </section>
 
     )

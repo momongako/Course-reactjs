@@ -15580,3 +15580,7 @@ del {
 }
 
 /* end css login */
+/* button login hidde */
+a#l {
+  visibility: hidden;
+}
