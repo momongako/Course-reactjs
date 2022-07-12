@@ -170,11 +170,7 @@ const Admin = () => {
                 <div className="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                   <div className="dataTable-top">
                     <div className="dataTable-search">
-                      <input
-                        className="dataTable-input"
-                        placeholder="Search..."
-                        type="text"
-                      />
+
                     </div>
                   </div>
                   <div className="dataTable-container">
