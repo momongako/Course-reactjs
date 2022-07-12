@@ -250,19 +250,19 @@ const CourseEdit = () => {
                                   <strong>Course Curriculum</strong>
                                 </td>
                                 <td>
-                                    <Scroll>
-                                        {product!==null?(product.content.map((item,key1=index) => (
-                                        <>
+                                  <Scroll>
+                                    {product !== null ? (product.content.map((item, key1 = index) => (
+                                      <>
                                         {/* <h4>SECTION:<input className="col-6 border" value={Object.values(item)[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4> */}
-                                        <h4>SECTION:<input className="col-6 border" value={Object.values(product.content[key1])[1]} onChange={(e) => handleSectionName(e,key1,item)}/> </h4>
+                                        <h4>SECTION:<input className="col-6 border" value={Object.values(product.content[key1])[1]} onChange={(e) => handleSectionName(e, key1, item)} /> </h4>
 
-                                        {Object.values(item)[0].map((content,key2=index)=>
-                                            <div className="ms-5 my-1 border col-10"><input className="col-12" value ={content} name={key2} onChange={(e) => handleSectionContent(e,key1)} /></div>
-                                          )}
-                                        </>
-                                      ))):(<>
-                                      <h4>SECTION: <AddSection field="section"/></h4>
-                                      </>)}
+                                        {Object.values(item)[0].map((content, key2 = index) =>
+                                          <div className="ms-5 my-1 border col-10"><input className="col-12" value={content} name={key2} onChange={(e) => handleSectionContent(e, key1)} /></div>
+                                        )}
+                                      </>
+                                    ))) : (<>
+                                      <h4>SECTION: <AddSection field="section" /></h4>
+                                    </>)}
                                   </Scroll>
                                 </td>
                               </tr>

@@ -145,7 +145,7 @@ const Admin = () => {
                     </h2>
                   </div>
                   <div className="col-6 my-auto">
-                    <Link to="edit/new" className="ms-5">
+                    <Link to="addcourse" className="ms-5">
                       <button
                         className="btn btn-success"
                       >

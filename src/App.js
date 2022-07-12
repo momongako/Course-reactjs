@@ -52,7 +52,7 @@ export default function App() {
             <Route path="category" element={<Category />} />
             <Route path="courseCategory/:name" element={<CourseCategory />} />
             <Route path="admin" element={<Admin />} />
-            <Route path="addcourse" element={<AddCourses />} />
+            <Route path="admin/addcourse" element={<AddCourses />} />
             <Route path='detail/:id' element={<CourseDetail />} />
             <Route path="admin/edit/:id" element={<CourseEdit />} />
             <Route path="login" element={<Login themeEdit={themeEdit} />} />

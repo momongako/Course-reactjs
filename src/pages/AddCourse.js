@@ -16,43 +16,55 @@ const CourseEdit = () => {
 
 
     let navigate = useNavigate();
-
-
+    const [name, setName] = useState('');
+    const [category, setCategory] = useState('');
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
+    const [date, setdate] = useState('');
 
 
 
 
     const saveProduct = () => {
-        let method = "POST";
-        let id = "";
-        if (product.id) {
-            method = "PUT";
-            id = product.id;
-        }
 
+        let data = {
+            mame: name,
+            category: category,
+            price: price,
+            description: description,
+            date: date
+        }
+        console.log('>>> check data', name, category, price)
         const requestOptions = {
-            method: method,
+            method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(product),
+            body: JSON.stringify(data),
         };
         fetch(
-            "https://62c253232af60be89ed60e41.mockapi.io/Courses/" + id,
+            "https://62c253232af60be89ed60e41.mockapi.io/Courses/",
             requestOptions
         )
             .then((response) => response.json())
             .then((data) => {
                 navigate(-1);
+                console.log(data)
             });
     };
 
+    const testsubmit = () => {
+        console.log(">>> check ", name, price)
+    }
     const handleChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
+        // const target = event.target;
+        // const value = target.value;
+        // const name = target.name;
 
-        let data = { ...product };
-        data[name] = value;
-        setProduct(data);
+        // let data = { ...product };
+        // data[name] = value;
+        // setProduct(data);
+        console.log('>>> check event', event)
+
+
     };
 
 
@@ -103,9 +115,9 @@ const CourseEdit = () => {
                                                                 <input
                                                                     type="text"
                                                                     className="form-control"
-                                                                    // value={product.name}
+                                                                    value={name}
                                                                     name="name"
-                                                                // onChange={(e) => handleChange(e)}
+                                                                    onChange={(event) => setName(event.target.value)}
                                                                 ></input>
                                                             </td>
                                                         </tr>
@@ -114,25 +126,13 @@ const CourseEdit = () => {
                                                                 <strong>Category</strong>
                                                             </td>
                                                             <td>
-                                                                <select
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                    value={category}
                                                                     name="category"
-                                                                // value={product.category}
-                                                                // onChange={(e) => {
-                                                                //     handleChange(e);
-                                                                // }}
-                                                                >
-                                                                    {/* {categories != null ? (
-                                                                        categories.map((item) => (
-                                                                            <option key={item.id} value={item.name}>
-                                                                                {item.name}
-                                                                            </option>
-                                                                        ))
-                                                                    ) : (
-                                                                        <option key={item.id} value="loading">
-                                                                            loading
-                                                                        </option>
-                                                                    )} */}
-                                                                </select>
+                                                                    onChange={(event) => setCategory(event.target.value)}
+                                                                ></input>
                                                             </td>
                                                         </tr>
 
@@ -144,9 +144,9 @@ const CourseEdit = () => {
                                                                 <input
                                                                     type="number"
                                                                     className="form-control"
-                                                                    // value={product.price}
+                                                                    value={price}
                                                                     name="price"
-                                                                // onChange={(e) => handleChange(e)}
+                                                                    onChange={(event) => setPrice(event.target.value)}
                                                                 ></input>
                                                             </td>
                                                         </tr>
@@ -167,8 +167,8 @@ const CourseEdit = () => {
                                                                     type="text"
                                                                     name="description"
                                                                     className="form-control"
-                                                                // value={product.description}
-                                                                // onChange={(e) => handleChange(e)}
+                                                                    value={description}
+                                                                    onChange={(event) => setDescription(event.target.value)}
                                                                 ></textarea>
                                                             </td>
                                                         </tr>
@@ -199,7 +199,7 @@ const CourseEdit = () => {
                                                     <button
                                                         type="button"
                                                         class="btn btn-primary"
-                                                    // onClick={() => saveProduct()}
+                                                        onClick={saveProduct}
                                                     >
                                                         Save
                                                     </button>
