@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import "./Admin.css";
 import ReactPaginate from "react-paginate";
 import { useSelector, useDispatch } from "react-redux";
-import {courseInfoActions} from "../store/ItemInfoSlice"
+import { courseInfoActions } from "../store/ItemInfoSlice"
 import { fetchCourseData, fetchCourseActions, fetchCategoryActions } from "../store/Fetch";
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -18,7 +18,7 @@ const Admin = () => {
   const [direction, setDirection] = useState(1)
   const [searchTerm, setSearchTerm] = useState('');
 
-  
+
   useEffect(() => {
     let url = 'https://62c253232af60be89ed60e41.mockapi.io/Courses/';
     fetch(url)
@@ -26,7 +26,7 @@ const Admin = () => {
       .then((data) => {
         setProducts(data);
       });
-}, []);
+  }, []);
 
 
   useEffect(() => {
@@ -38,11 +38,11 @@ const Admin = () => {
       .then((Response) => Response.json())
       .then((data) => {
         setCurrentItems(data)
-        setProducts(data); 
+        setProducts(data);
       });
   }, [searchTerm]);
 
-  
+
   useEffect(() => {
     if (products != null) {
       setPage(0);
@@ -50,7 +50,7 @@ const Admin = () => {
   }, [products]);
 
 
-  const pageHandler =(data)=>{
+  const pageHandler = (data) => {
     if (data !== null) {
       let itemsPerPage = 10;
       const starOffset = page * itemsPerPage;
@@ -66,7 +66,7 @@ const Admin = () => {
 
   useEffect(() => {
     pageHandler(products)
-  },[page]);
+  }, [page]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
@@ -84,47 +84,49 @@ const Admin = () => {
     });
   };
 
-const [products_list,setProductList]=useState([]);
-useEffect(() => {  if (currentItems!== null) {
-  var list = currentItems.map((item, key) => (
-    <tr key={key}>
-      <td className='adminTableSTT'>{item.id}</td>
-      <td className='adminTableCName'>{item.name}</td>
-      <td className='adminTableCat'>{item.category}</td>
-      <td className='adminTableLevel'>{item.level>75?'Expert':item.level>50?'Advanced':item.level>25?'Intermediate':'Beginner'}</td>
-      <td className='adminTablePic'><img src={item.picture} alt='' width='50px' height='50px'/></td>
-      <td className='adminTablePrice'>${item.price}</td>
-      <td className='adminTableEdit'>
-      <Link to={'edit/' + item.id}>
-        <button className="btn btn-primary mx-1 adminEditButton">
-        <i className="fa-solid fa-pen-to-square"></i>
-        </button>
-        </Link>
-        <button className="btn btn-danger mx-1 adminDelete,Button" onClick={() => deleteUser(item.id)}>
-        <i className="fa-solid fa-trash"></i>
-        </button>
+  const [products_list, setProductList] = useState([]);
+  useEffect(() => {
+    if (currentItems !== null) {
+      var list = currentItems.map((item, key) => (
+        <tr key={key}>
+          <td className='adminTableSTT'>{item.id}</td>
+          <td className='adminTableCName'>{item.name}</td>
+          <td className='adminTableCat'>{item.category}</td>
+          <td className='adminTableLevel'>{item.level > 75 ? 'Expert' : item.level > 50 ? 'Advanced' : item.level > 25 ? 'Intermediate' : 'Beginner'}</td>
+          <td className='adminTablePic'><img src={item.picture} alt='' width='50px' height='50px' /></td>
+          <td className='adminTablePrice'>${item.price}</td>
+          <td className='adminTableEdit'>
+            <Link to={'edit/' + item.id}>
+              <button className="btn btn-primary mx-1 adminEditButton">
+                <i className="fa-solid fa-pen-to-square"></i>
+              </button>
+            </Link>
+            <button className="btn btn-danger mx-1 adminDelete,Button" onClick={() => deleteUser(item.id)}>
+              <i className="fa-solid fa-trash"></i>
+            </button>
 
-      </td>
-    </tr>
-  ));
-  setProductList(list);
-}},[currentItems])
-  
-  const SortColumn = (event,field, type) => {
+          </td>
+        </tr>
+      ));
+      setProductList(list);
+    }
+  }, [currentItems])
+
+  const SortColumn = (event, field, type) => {
     const sortData = [...products];
     if (type === 'number') {
       sortData.sort((a, b) => direction * (a[field] - b[field]));
     } else if (type === 'string') {
       sortData.sort(
         (a, b) =>
-        direction*(a[field].toLowerCase().localeCompare(b[field].toLowerCase()))
+          direction * (a[field].toLowerCase().localeCompare(b[field].toLowerCase()))
       );
     }
     var otherClass = document.querySelector('.theadRow th')
     otherClass.classList.value = "sort"
-    
+
     var itemClass = (event.target.classList);
-    itemClass.value=('sort'+" "+(direction===1?'asc':'desc'));
+    itemClass.value = ('sort' + " " + (direction === 1 ? 'asc' : 'desc'));
     setDirection(direction * -1);
     pageHandler(sortData)
   };
@@ -143,13 +145,13 @@ useEffect(() => {  if (currentItems!== null) {
                     </h2>
                   </div>
                   <div className="col-6 my-auto">
-                  <Link to="edit/new" className="ms-5">
-                    <button
-                      className="btn btn-success"
-                    >
-                      <i className="fa-solid fa-circle-plus"></i>
-                      <span className="py-1 px-1">Add New Course</span>
-                    </button>
+                    <Link to="edit/new" className="ms-5">
+                      <button
+                        className="btn btn-success"
+                      >
+                        <i className="fa-solid fa-circle-plus"></i>
+                        <span className="py-1 px-1">Add New Course</span>
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -169,58 +171,58 @@ useEffect(() => {  if (currentItems!== null) {
                     <table id="datatablesSimple" className="responsive">
                       <thead>
                         <tr className="theadRow">
-                          <th className="sort" data-sort="number" onClick={(e)=>SortColumn(e,'id','number')}>
+                          <th className="sort" data-sort="number" onClick={(e) => SortColumn(e, 'id', 'number')}>
                             No.
                           </th>
-                          <th className="sort" data-sort="name" onClick={(e)=>SortColumn(e,'name','string')}>
-                              Course Name
+                          <th className="sort" data-sort="name" onClick={(e) => SortColumn(e, 'name', 'string')}>
+                            Course Name
                           </th>
-                          <th className="sort" data-sort="category" onClick={(e)=>SortColumn(e,'category','string')}>
-                              Category
+                          <th className="sort" data-sort="category" onClick={(e) => SortColumn(e, 'category', 'string')}>
+                            Category
                           </th>
-                          <th className="sort" data-sort="level" onClick={(e)=>SortColumn(e,'level','number')}>
-                              Level
+                          <th className="sort" data-sort="level" onClick={(e) => SortColumn(e, 'level', 'number')}>
+                            Level
                           </th>
                           <th>
-                              Picture
+                            Picture
                           </th>
-                          <th className="sort" data-sort="price" onClick={(e)=>SortColumn(e,'price','number')}>
-                              Price
+                          <th className="sort" data-sort="price" onClick={(e) => SortColumn(e, 'price', 'number')}>
+                            Price
                           </th>
                           <th>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                      {products_list}
+                        {products_list}
                       </tbody>
                     </table>
                   </div>
                   <div className="clearfix">
-                <div className="hint-text">
-                  Showing <b>10</b> out of <b>{products.length}</b> entries
-                </div>
-                <ReactPaginate
-                  previousLabel="Previous"
-                  nextLabel="Next"
-                  pageClassName="page-item"
-                  pageLinkClassName="page-link"
-                  previousClassName="page-item"
-                  previousLinkClassName="page-link"
-                  nextClassName="page-item"
-                  nextLinkClassName="page-link"
-                  breakLabel="..."
-                  breakClassName="page-item"
-                  breakLinkClassName="page-link"
-                  pageCount={pageCount}
-                  marginPagesDisplayed={1}
-                  pageRangeDisplayed={5}
-                  onPageChange={handlePageClick}
-                  containerClassName="pagination"
-                  activeClassName="active"
-                  forcePage={page}
-                />
-              </div>
+                    <div className="hint-text">
+                      Showing <b>10</b> out of <b>{products.length}</b> entries
+                    </div>
+                    <ReactPaginate
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      pageClassName="page-item"
+                      pageLinkClassName="page-link"
+                      previousClassName="page-item"
+                      previousLinkClassName="page-link"
+                      nextClassName="page-item"
+                      nextLinkClassName="page-link"
+                      breakLabel="..."
+                      breakClassName="page-item"
+                      breakLinkClassName="page-link"
+                      pageCount={pageCount}
+                      marginPagesDisplayed={1}
+                      pageRangeDisplayed={5}
+                      onPageChange={handlePageClick}
+                      containerClassName="pagination"
+                      activeClassName="active"
+                      forcePage={page}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
