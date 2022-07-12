@@ -125,7 +125,7 @@ const Login = (props) => {
                     {isSubmitted ? <div className="d-flex justify-content-center" ><h1>User is successfully logged in</h1></div> : renderForm}
                 </div>
             </div>
-            <button onClick={props.themeEdit} >ok</button>
+            {/* <button onClick={props.themeEdit} >ok</button> */}
         </section>
 
     )

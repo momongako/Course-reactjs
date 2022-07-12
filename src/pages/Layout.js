@@ -17,7 +17,7 @@ const Layout = () => {
       <CartProvider>
         <Header ButtoncheckLogin={ButtoncheckLogin} />
         <Outlet ButtoncheckLogin={ButtoncheckLogin} />
-        <button onClick={ButtoncheckLogin} >click</button>
+        {/* <button onClick={ButtoncheckLogin} >click</button> */}
         <Footer />
       </CartProvider>
     </>

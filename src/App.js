@@ -20,6 +20,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotPage from "./pages/NotPage";
 import Login from "./pages/Login";
+import AddCourses from './pages/AddCourse';
+
 export const themeContext = createContext();
 
 export default function App() {
@@ -50,6 +52,7 @@ export default function App() {
             <Route path="category" element={<Category />} />
             <Route path="courseCategory/:name" element={<CourseCategory />} />
             <Route path="admin" element={<Admin />} />
+            <Route path="addcourse" element={<AddCourses />} />
             <Route path='detail/:id' element={<CourseDetail />} />
             <Route path="admin/edit/:id" element={<CourseEdit />} />
             <Route path="login" element={<Login themeEdit={themeEdit} />} />
