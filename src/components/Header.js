@@ -13,9 +13,12 @@ const Header = () => {
     useCart();
   const [theme] = useContext(themeContext);
   const login = (
-    <Link id={theme} to="login" className="btn btn-outline-info" >
-      <a >login</a>
-    </Link>
+    <>
+      <Link id={theme} to="login" className="btn btn-outline-info" >
+        <a >login</a>
+      </Link>
+
+    </>
   )
   return (
     <header className="container-fluid">

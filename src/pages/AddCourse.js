@@ -28,7 +28,7 @@ const CourseEdit = () => {
     const saveProduct = () => {
 
         let data = {
-            mame: name,
+            name: name,
             category: category,
             price: price,
             description: description,

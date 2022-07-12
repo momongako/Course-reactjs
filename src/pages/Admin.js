@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 
 const Admin = () => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(-1);
@@ -73,11 +73,21 @@ const Admin = () => {
   };
 
   const deleteUser = (id) => {
+    // fetch('https://62c253232af60be89ed60e41.mockapi.io/Courses/' + id, {
+    //   method: 'DELETE',
+    // }).then(() => {
+    //   let result = [...currentItems];
+    //   result = result.filter((item) => {
+    //     return item.id !== id;
+    //   });
+    //   setCurrentItems(result);
+    // });
+    console.log('>>> Check Id : ', id);
     fetch('https://62c253232af60be89ed60e41.mockapi.io/Courses/' + id, {
       method: 'DELETE',
     }).then(() => {
-      let result = [...currentItems];
-      result = result.filter((item) => {
+
+      const result = currentItems.filter((item) => {
         return item.id !== id;
       });
       setCurrentItems(result);
@@ -200,7 +210,7 @@ const Admin = () => {
                   </div>
                   <div className="clearfix">
                     <div className="hint-text">
-                      Showing <b>10</b> out of <b>{products.length}</b> entries
+                      Showing <b>10</b> out of <b>{currentItems.length}</b> entries
                     </div>
                     <ReactPaginate
                       previousLabel="Previous"

@@ -44,7 +44,7 @@ const Login = (props) => {
 
                 setIsSubmitted(true);
                 navigate('/admin/')
-
+                props.themeEdit()
             }
         } else {
             // Username not found
@@ -103,7 +103,7 @@ const Login = (props) => {
                     </div>
                     <a href="#!" className="text-body">Forgot password?</a>
                 </div>
-                <div onClick={props.themeEdit} className="text-center text-lg-start mt-4 pt-2">
+                <div className="text-center text-lg-start mt-4 pt-2">
                     <Link to="" type="button" onClick={handleSubmit} className="btn btn-primary btn-lg" style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>Login</Link>
                     <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!" className="link-danger">Register</a></p>
                 </div>
