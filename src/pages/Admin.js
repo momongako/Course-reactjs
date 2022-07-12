@@ -210,7 +210,7 @@ const Admin = () => {
                   </div>
                   <div className="clearfix">
                     <div className="hint-text">
-                      Showing <b>10</b> out of <b>{currentItems.length}</b> entries
+                      Showing <b>10</b> out of <b>{products.length}</b> entries
                     </div>
                     <ReactPaginate
                       previousLabel="Previous"
